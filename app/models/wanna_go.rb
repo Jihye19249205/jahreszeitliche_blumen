@@ -1,0 +1,2 @@
+class WannaGo < ApplicationRecord
+end
