@@ -1,0 +1,40 @@
+<div class = "container">
+  <div class = "row">
+    <h2>カテゴリ追加</h2>
+    <table class = "table">
+      <%= form_with model: @season, url: admin_category_path do %>
+      <tr>
+        <th>季節</th>
+        <td><%= f.text_field :season %></td>
+        <td><%= f.submit "追加", class: "btn btn-success" %></td>
+      </tr>
+      <tr>
+        <th>都道府県</th>
+        <td><%= f.text_field :prefecture %></td>
+        <td><%= f.submit "追加", class: "btn btn-success" %></td>
+      </tr>
+      <% end %>
+    </table>
+    <h2>カテゴリ一覧</h2>
+    <div>
+      <h4>季節</h4>
+      <table class = "table">
+        <% @seasons.each do |season| %>
+        <tr>
+          <%= category.season %>
+        </tr>
+        <% end %>
+      </table>
+    </div>
+    <div>
+      <h4>都道府県</h4>
+      <table class = "table">
+        <% @prefectures.each do |prefecture| %>
+        <tr>
+          <%= category.prefecture %>
+        </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>

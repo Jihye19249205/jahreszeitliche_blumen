@@ -1,58 +1,46 @@
 Rails.application.routes.draw do
-  namespace :admin do
-    get 'users/index'
-    get 'users/show'
-    get 'users/edit'
-    get 'users/update'
-  end
-  namespace :admin do
-    get 'seasons/index'
-    get 'seasons/create'
-    get 'seasons/edit'
-    get 'seasons/update'
-  end
-  namespace :admin do
-    get 'pictures/index'
-    get 'pictures/show'
-    get 'pictures/edit'
-    get 'pictures/update'
-    get 'pictures/destroy'
-  end
-  namespace :public do
-    get 'seasons/index'
-  end
-  namespace :public do
-    get 'prefectures/index'
-  end
-  namespace :public do
-    get 'categories/index'
-  end
-  get 'wanna_goes/create'
-  get 'wanna_goes/destroy'
-  namespace :public do
-    get 'users/show'
-    get 'users/edit'
-    get 'users/update'
-    get 'users/confirm_withdraw'
-    get 'users/withdraw'
-  end
-  namespace :public do
-    get 'pictures/new'
-    get 'pictures/create'
-    get 'pictures/index'
-    get 'pictures/show'
-    get 'pictures/edit'
-    get 'pictures/update'
-    get 'pictures/destroy'
-  end
-  devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
+  
+  #管理者のルーティング
+  devise_for :admin, skip: [:registrations, :passwords], controllers: {
   sessions: "admin/sessions"
   }
-
-
+  
+  namespace :admin do
+    root to: "homes#top"
+    resources :pictures, only: [:index, :show, :edit, :update, :destroy] do
+      resource :picture_comments, only: [:edit, :update, :destroy]
+    end
+    resources :categories, only: [:index, :create, :edit, :update]
+    resources :prefectures, only: [:index, :create, :edit, :update]
+    resources :seasons, only: [:index, :create, :edit, :update]
+    resources :users, only: [:index, :show, :edit, :update]
+  end
+  
+  #ユーザのルーティング
   devise_for :users, skip: [:passwords], controllers: {
     registrations: "public/registrations",
     sessions: 'public/sessions'
   }
+  
+  scope module: :public do
+    
+    root to: "homes#top"
+    get '/about' => "homes#about", as: 'about'
+    resources :pictures do
+      resource :wanna_goes, only: [:destroy, :create]
+      resource :picture_comments, only: [:index, :new, :create]
+    end
+    resources :users, only: [:show, :edit, :update] do
+      collection do
+        get 'confirm_withdraw'
+        patch 'withdraw'
+      end
+    end
+    resources :categories, only: [:index] do
+      resource :prefectures, only: [:index]
+      resource :seasons, only: [:index]
+    end
+  end
+  
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
