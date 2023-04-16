@@ -1,39 +1,24 @@
 <div class = "container">
   <div class = "row">
-    <h2>カテゴリ追加</h2>
-    <table class = "table">
-      <%= form_with model: @season, url: admin_category_path do %>
-      <tr>
-        <th>季節</th>
-        <td><%= f.text_field :season %></td>
-        <td><%= f.submit "追加", class: "btn btn-success" %></td>
-      </tr>
-      <tr>
-        <th>都道府県</th>
-        <td><%= f.text_field :prefecture %></td>
-        <td><%= f.submit "追加", class: "btn btn-success" %></td>
-      </tr>
-      <% end %>
-    </table>
-    <h2>カテゴリ一覧</h2>
-    <div>
-      <h4>季節</h4>
+    <!--サイドバーをrenderする↓-->
+    <div class = "col-md-3"></div>
+    <div class = "col-md-9">
+      <h2>カテゴリ追加</h2>
       <table class = "table">
-        <% @seasons.each do |season| %>
+        <%= form_with model: @category, url: admin_categories_path do |f| %>
         <tr>
-          <%= category.season %>
+          <th>カテゴリ名</th>
+          <td><%= f.text_field :name %></td>
+          <td><%= f.submit "追加", class: "btn btn-success" %></td>
         </tr>
         <% end %>
       </table>
-    </div>
-    <div>
-      <h4>都道府県</h4>
-      <table class = "table">
-        <% @prefectures.each do |prefecture| %>
+      <h2>カテゴリ一覧</h2>
+      <table>
         <tr>
-          <%= category.prefecture %>
+          <td><%= link_to "季節別の写真を見る", admin_seasons_path, class: "btn" %></td>
+          <td><%= link_to "都道府県別の写真を見る", admin_prefectures_path, class: "btn" %></td>
         </tr>
-        <% end %>
       </table>
     </div>
   </div>

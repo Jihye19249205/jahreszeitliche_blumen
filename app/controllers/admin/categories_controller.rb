@@ -1,14 +1,8 @@
 class Admin::CategoriesController < ApplicationController
   
   def index
-    # 一覧
     @categories = Category.all
-    @seasons = Season.all
-    @prefectures = Prefecture.all
-    # 追加
     @category = Category.new
-    @season = Season.new
-    @prefecture = Prefecture.new
   end
   
   def create

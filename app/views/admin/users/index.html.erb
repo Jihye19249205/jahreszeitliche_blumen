@@ -1,2 +1,27 @@
-<h1>Admin::Users#index</h1>
-<p>Find me in app/views/admin/users/index.html.erb</p>
+<div class = "container">
+  <div class = "row">
+    <h2>ユーザ一覧</h2>
+    <table class = "table">
+      <thead>
+        <tr>
+          <th>ユーザ名</th>
+          <th>ニックネーム</th>
+          <th>都道府県</th>
+          <th>アカウントステータス</th>
+          <th colspan = "1"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @users.each do |user| %>
+        <tr>
+          <td><%= user.last_name + user.first_name %></td>
+          <td><%= user.nickname %></td>
+          <td><%= user.prefecture %></td>
+          <td><%= user.is_deleted %></td>
+          <td><%= link_to "編集", edit_admin_user(user), class: "btn btn-success" %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

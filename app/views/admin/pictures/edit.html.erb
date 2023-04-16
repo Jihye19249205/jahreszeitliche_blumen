@@ -1,2 +1,12 @@
-<h1>Admin::Pictures#edit</h1>
-<p>Find me in app/views/admin/pictures/edit.html.erb</p>
+<div class = "container">
+  <div class = "row">
+    <h2>キャプション編集</h2>
+    <div>
+      <%= form_with model: @picture, admin_picture_path do |f| %>
+      <h4>キャプション：</h4>
+      <p><%= f.text_area :caption %></p>
+      <p><%= f.submit "編集内容を保存" %></p>
+      <% end %>
+    </div>
+  </div>
+</div>

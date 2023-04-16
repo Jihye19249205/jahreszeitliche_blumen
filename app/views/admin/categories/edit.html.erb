@@ -2,7 +2,7 @@
   <div class = "row">
     <h2>カテゴリ編集</h2>
     <table class = "table">
-      <%= form_with model: @category, url: admin_category_path %>
+      <%= form_with model: @category, url: admin_category_path do |f| %>
       <tr>
         <td><%= @category.name %></td>
         <td><%= f.text_field :name %></td>
