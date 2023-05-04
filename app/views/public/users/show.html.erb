@@ -1,2 +1,21 @@
-<h1>Public::Users#show</h1>
-<p>Find me in app/views/public/users/show.html.erb</p>
+<%= flash[:notice] %>
+  <div class = "container">
+    <div class = "row">
+      <div class = "col-md-5">
+        <h2>マイページ</h2>
+        <div><%= image_tag @user.image, size: "200x150" %></div>
+        <table>
+          <tr><td>ユーザ名：</td><td><%= @user.nick_name %></td></tr>
+          <tr><td>在住：</td><td><%= @user.prefecture %></td></tr>
+          <tr><td><%= @user.introduction %></td></tr>
+          <tr><td><%= link_to "ユーザ情報編集", edit_user_path(@user) %></td></tr>
+        </table>
+      </div>
+      <div class = "col-md-5">
+        <% @pictures.each do |picture| %>
+          <p><%= image_tag @user.picture %></p>
+          <p><%= @user.picture.created_at.strftime('%Y/%m/%d %H:%M') %></p>
+        <% end %>
+      </div>
+    </div>
+  </div>

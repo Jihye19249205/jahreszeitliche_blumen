@@ -1,2 +1,18 @@
-<h1>Public::Pictures#index</h1>
-<p>Find me in app/views/public/pictures/index.html.erb</p>
+<div class = "container">
+  <div class = "row">
+    <h2>投稿一覧(新着順)</h2>
+    <% @pictures.each do |picture| %>
+    <div class = "col-md-3">
+      <p><%= image_tag picture.image %></p>
+      <p>撮影者：<%= picture.user.nickname %>さん</p>
+      <p>「行ってみたい」：<%= picture.wanna_go.count %>件</p>
+      <p>
+        <%= link_to picture.picture_comments do %>
+          <%= picture.picture_comment %>
+        <% end %>
+      </p>
+    </div>
+    <% end %>
+  </div>
+</div>
+

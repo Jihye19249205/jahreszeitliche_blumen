@@ -2,7 +2,7 @@
   <div class = "row">
     <h2><%= @user.last_name + @user.first_name %>さんの情報詳細編集</h2>
     <%= form_with model: @user, admin_user_path do |f| %>
-    <table>
+    <table class = "table">
       <tr>
         <td>プロフィール画像：</td>
         <td><%= f.file_field :image, accept: "image/*" %></td>
@@ -10,6 +10,30 @@
       <tr>
         <td>ニックネーム：</td>
         <td><%= f.text_field :nickname %></td>
+      </tr>
+      <tr>
+        <td>紹介文：</td>
+        <td><%= f.text_area :introduction %></td>
+      </tr>
+      <tr>
+        <td>メールアドレス：</td>
+        <td><%= f.text_field :email %></td>
+      </tr>
+      <tr>
+        <td>在住：</td>
+        <td><%= f.text_field :prefecture %></td>
+      </tr>
+      <tr>
+        <td>アカウントステータス：</td>
+        <td>
+          <%= f.radio_button :is_deleted, true %>
+          <%= f.label "退会" %>
+          <%= f.radio_button :is_deleted, false %>
+          <%= f.label "有効" %>
+        </td>
+      </tr>
+      <tr>
+        <td><%= f.submit "編集内容を保存" %></td>
       </tr>
     </table>
     <% end %>

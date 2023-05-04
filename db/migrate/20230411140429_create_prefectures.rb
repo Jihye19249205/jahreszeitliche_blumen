@@ -4,7 +4,7 @@ class CreatePrefectures < ActiveRecord::Migration[6.1]
       #カテゴリID
       t.references :category, foreign_key: true, null: false
       #都道府県(enum)
-      t.integer :prefecture, null: false
+      t.string :prefecture, null: false
 
       t.timestamps
     end

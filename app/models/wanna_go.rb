@@ -1,9 +1,6 @@
 class WannaGo < ApplicationRecord
 
   belongs_to :picture
+  belongs_to :user
   
-  # def wanna_goed_by?(user)
-  #   wanna_goes.exists?(user_id: user.id)
-  # end
-
 end

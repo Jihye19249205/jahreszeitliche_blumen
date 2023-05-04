@@ -11,7 +11,9 @@ class CreatePictures < ActiveRecord::Migration[6.1]
       t.text :caption, null: false
       #最寄駅
       t.string :station, null: false
-      
+      #花・植物
+      t.string :flower_plant, null: false
+
       t.timestamps
     end
   end
