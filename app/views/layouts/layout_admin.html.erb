@@ -13,9 +13,17 @@
     <header class = "shadow-sm">
       <nav class="navbar navbar-expand-lg bg-light">
         <div class = "container">
-          <a class = "navbar-brand" href = "/">
-            <img src="logo.png" alt="Jahreszeitliche_Blumen">
-          </a>
+           <a class = "navbar-brand p-3" href = "/"><%= image_tag "logo.png", size: '100 x 80' %></a>
+          <div>
+            <%= form_with model: @picture, url: search_admin_picture_path do |f| %>
+            <p>
+              <%= f.text_field :keyword %>
+            </p>
+            <p>
+              <%= f.submit '検索' %>
+            </p>
+            <% end %>
+          </div>
            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         　　<span class="navbar-toggler-icon"></span>
         　</button>
@@ -31,33 +39,11 @@
           　  <%= link_to "カテゴリ一覧", admin_categories_path %>
           　</li>
           　<li class = "nav-link text-light">
-          　  <%= link_to "ログアウト", new_admin_session_path %>
-          　</li>
-          　<% elsif user_signed_in? %>
-          　<li class = "nav-link text-light">
-          　  <%= link_to, "新規投稿", new_picture_path %>
-          　</li>
-          　<li class = "nav-link text-light">
-          　  <%= link_to, "マイページ", user_path(current_user) %>
-          　</li>
-          　<li class = "nav-link text-light">
-          　  <%= link_to, "投稿一覧", pictures_path %>
-          　</li>
-          　<li class = "nav-link text-light">
-          　  <%= link_to, "行ってみたい一覧", picture_wanna_goes_path(current_user) %>
-          　</li>
-          　<li class = "nav-link text-light">
-          　  <%= link_to, "ログアウト", new_user_sessions_path %>
+          　  <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
           　</li>
           　<% else %>
           　<li class = "nav-link text-light">
-          　  <%= link_to, "About", about_path %>
-          　</li>
-          　<li>
-          　  <%= link_to, "投稿一覧", pictures_path %>
-          　</li>
-          　<li class = "nav-link text-light">
-          　  <%= link_to, "ユーザ登録", new_user_registration_path %>
+          　  <%= link_to "About", about_path %>
           　</li>
           　<% end %>
         　</ul>
@@ -67,8 +53,8 @@
     <main>
       <%= yield %>
     </main>
-    <footer>
-      <p>Copy Light. Chie Hirayama</p>
-    </footer>
   </body>
+  <footer>
+    <p>Copy Light. Chie Hirayama</p>
+  </footer>
 </html>

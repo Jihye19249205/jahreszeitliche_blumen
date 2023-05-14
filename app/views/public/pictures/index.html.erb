@@ -4,8 +4,8 @@
     <% @pictures.each do |picture| %>
     <div class = "col-md-3">
       <p><%= image_tag picture.image %></p>
-      <p>撮影者：<%= picture.user.nickname %>さん</p>
-      <p>「行ってみたい」：<%= picture.wanna_go.count %>件</p>
+      <p>撮影者：<%= picture.user.nick_name %>さん</p>
+      <p>「行ってみたい」：<%= picture.wanna_goes.count %>件</p>
       <p>
         <%= link_to picture.picture_comments do %>
           <%= picture.picture_comment %>

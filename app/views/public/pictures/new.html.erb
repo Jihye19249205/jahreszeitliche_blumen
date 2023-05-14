@@ -1,28 +1,33 @@
+<%= flash[:notice] %>
 <div class = "container">
   <div class = "row">
     <div class = "col-md-5">
       <h2>新規投稿</h2>
-      <p>選択した写真：</p>
-      <p><%= image_tag @picture.image, size: "300x250" %></p>
+      <%= form_with model: @picture, url: pictures_path do |f| %>
+      <p>写真選択：</p>
+      <p><%= f.file_field :image, accept: "image/*" %></p>
     </div>
     <div class = "col-md-5">
       <div class = "col-md-5">
       <table class = "table">
-        <%= form_with model: @picture, url: picture_path do |f| %>
         <tr>
           <td><%= f.label "撮影スポット(必須):" %></td>
           <td><%= f.text_field :spot_name %></td>
         </tr>
         <tr>
           <td><%= f.label "撮影時期(必須):" %></td>
-          <td><%= f.collection_select :season_id, Season.all, :id, :season, :prompt => "--選択してください--" %></td>
+          <td><%= f.collection_select :season_id, Season.all, :id, :season %></td>
         </tr>
         <tr>
           <td><%= f.label "都道府県(必須):" %></td>
-          <td><%= f.collection_select :prefecture_id, Prefecture.all, :id, :prefecture, :prompt => "--選択してください--" %></td>
+          <td><%= f.collection_select :prefecture_id, Prefecture.all, :id, :prefecture %></td>
         </tr>
         <tr>
-          <td><%= f.label "花。植物の種類(必須):" %></td>
+          <td><%= f.label "最寄駅" %></td>
+          <td><%= f.text_field :station %></td>
+        </tr>
+        <tr>
+          <td><%= f.label "花・植物の種類(必須):" %></td>
           <td><%= f.text_field :flower_plant %></td>
         </tr>
         <tr>
@@ -30,10 +35,10 @@
           <td><%= f.text_area :caption %></td>
         </tr>
         <tr>
-          <td><%= f.submit "編集を保存", class: "btn btn-primary" %></td>
+          <td><%= f.submit "投稿を保存", class: "btn btn-primary" %></td>
           <td></td>
         </tr>
-        <% end %>
+      <% end %>
       </table>
     </div>
     </div>

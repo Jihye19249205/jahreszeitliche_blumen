@@ -5,9 +5,15 @@
     <h2><%= @user.last_name + @user.first_name %>（<%= @user.last_name_kana + @user.first_name_kana %>）さんの詳細情報</h2>
     <div>
       <h4>プロフィール画像：</h4>
-      <p><%= image_tag @user.image, size: "200 x 150" %></p>
+      <p>
+        <% if @user.profile_image.attached? %>
+          <%= image_tag @user.profile_image, size: "200x150" %>
+        <% else %>
+          <%= image_tag 'no_image', size: "200x150" %>
+        <% end %>
+        </p>
       <table class = "table">
-        <tr><td>ニックネーム：</td><td><%= @user.nickname %></td></tr>
+        <tr><td>ニックネーム：</td><td><%= @user.nick_name %></td></tr>
         <tr><td>メールアドレス：</td><td><%= @user.email %></td></tr>
         <tr><td>在住：</td><td><%= @user.prefecture %></td></tr>
         <tr><td>アカウントステータス：</td><td><%= @user.is_deleted %></td></tr>
@@ -17,11 +23,11 @@
     <div>
       <h2><%= @user.last_name + @user.first_name %>さんの投稿一覧</h2>
       <table>
-        <% @users.each do |user| %>
+        <% pictures.each do |picture| %>
         <tr>
           <td>
-            <% if user.image.attached? %>
-              <%= image_tag user.image, size: "200x150" %>
+            <% if @user.picture.image.attached? %>
+              <%= image_tag user.picture.image, size: "200x150" %>
             <% else %>
               <%= image_tag 'no_image', size: "200x150" %>
             <% end %>

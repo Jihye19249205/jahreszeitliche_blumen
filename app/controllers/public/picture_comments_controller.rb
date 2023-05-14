@@ -1,4 +1,6 @@
 class Public::PictureCommentsController < ApplicationController
+  layout 'layout_user'
+  before_action :authenticate_user!
   
   def new
     @picture_comment = PictureComment.new
@@ -15,7 +17,7 @@ class Public::PictureCommentsController < ApplicationController
   private
   
   def picture_comment_params
-    params.require(:comment).permit(:picture_id, :user_id, :comment)
+    params.require(:picture_comment).permit(:comment)
   end
   
 end

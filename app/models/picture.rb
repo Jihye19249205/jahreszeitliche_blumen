@@ -1,9 +1,12 @@
 class Picture < ApplicationRecord
 
-  has_one_attached :image
-  belongs_to :user
-  has_many :picture_comments, dependent: :destroy
-  has_many :wanna_goes, dependent: :destroy
+  extend ActiveHash::Associations::ActiveRecordExtensions
+
+    has_one_attached :image
+    belongs_to :user
+    has_many :picture_comments, dependent: :destroy
+    has_many :wanna_goes, dependent: :destroy
+    belongs_to_active_hash :prefecture
 
   def wanna_gone_by?(user)
     wanna_goes.exists?(user_id: user.id)

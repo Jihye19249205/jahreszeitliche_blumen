@@ -1,7 +1,9 @@
 class Admin::PrefecturesController < ApplicationController
+  layout 'layout_admin'
+  before_action :authenticate_admin!
   
   def index
-    @prefecture = Prefecture.all
+    @prefectures = Prefecture.all
   end
   
   def create

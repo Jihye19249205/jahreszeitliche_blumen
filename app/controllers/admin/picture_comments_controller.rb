@@ -1,4 +1,6 @@
 class Admin::PictureCommentsController < ApplicationController
+  layout 'layout_admin'
+  before_action :authenticate_admin!
 
   def edit
     @picture_comment = PictureComment.find(params[:id])

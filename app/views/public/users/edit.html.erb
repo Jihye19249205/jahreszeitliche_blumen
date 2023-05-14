@@ -3,11 +3,11 @@
     <h2>マイページ情報編集</h2>
     <table>
       <%= form_with model: @user, url: user_path(current_user), method: :patch do |f| %>
-      <tr><td>プロフィール画像：</td><td><%= f.file_field :image, accept: "image/*"%></td></tr>
+      <tr><td>プロフィール画像：</td><td><%= f.file_field :profile_image, accept: "image/*"%></td></tr>
       <tr><td>ユーザ名：</td><td><%= f.text_field :nick_name %></td></tr>
       <tr><td>プロフィール文：</td><td><%= f.text_area :introduction %></td></tr>
       <tr><td>メールアドレス：</td><td><%= f.text_field :email %></td></tr>
-      <tr><td>在住都道府県：</td><td><%= f.collection_select :prefecture_id, Prefecture.all ,:id,:name %></td></tr>
+      <tr><td>在住都道府県：</td><td><%= f.collection_select :prefecture_id, Prefecture.all ,:id,:prefecture %></td></tr>
       <tr><td><%= f.submit "編集内容を保存" %></td><td><%= f.submit "アカウント削除" %></td></tr>
       <% end %>
     </table>

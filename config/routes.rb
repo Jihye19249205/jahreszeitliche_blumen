@@ -6,9 +6,17 @@ Rails.application.routes.draw do
   }
 
   namespace :admin do
+
+    devise_scope :admin do
+      get 'admin/sign_out', to: 'sessions#destroy'
+    end
+
     root to: "homes#top"
     resources :pictures, only: [:index, :show, :edit, :update, :destroy] do
       resource :picture_comments, only: [:edit, :update, :destroy]
+      member do
+        get 'search'
+      end
     end
     resources :categories, only: [:index, :create, :edit, :update]
     resources :prefectures, only: [:index, :create, :edit, :update]
@@ -23,17 +31,20 @@ Rails.application.routes.draw do
   }
 
   scope module: :public do
+    devise_scope :user do
+      get 'users/guest_sign_in', to: 'sessions#guest_sign_in'
+      delete 'users/sign_out', to: 'devise/sessions#destroy'
+    end
 
-    root to: "homes#top"
+    root to: "homes#index"
+    get '/top' => "homes#top", as: 'top'
     get '/about' => "homes#about", as: 'about'
-    post 'users/guest_sign_in', to: 'users/sessions#guest_sign_in'
     resources :pictures do
-      resource :wanna_goes, only: [:destroy, :create]
+      resource :wanna_goes, only: [:destroy, :create, :index]
       resource :picture_comments, only: [:index, :new, :create]
-      # collection do
-      #   get 'picture_select'
-      #   post 'picture_select'
-      # end
+      collection do
+        get 'search'
+      end
     end
     resources :users, only: [:show, :edit, :update] do
       collection do

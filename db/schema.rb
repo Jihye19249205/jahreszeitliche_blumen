@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_04_11_140440) do
+ActiveRecord::Schema.define(version: 2023_05_13_043541) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -77,8 +77,10 @@ ActiveRecord::Schema.define(version: 2023_04_11_140440) do
     t.string "flower_plant", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "user_id"
     t.index ["prefecture_id"], name: "index_pictures_on_prefecture_id"
     t.index ["season_id"], name: "index_pictures_on_season_id"
+    t.index ["user_id"], name: "index_pictures_on_user_id"
   end
 
   create_table "prefectures", force: :cascade do |t|
@@ -91,9 +93,9 @@ ActiveRecord::Schema.define(version: 2023_04_11_140440) do
 
   create_table "seasons", force: :cascade do |t|
     t.integer "category_id", null: false
-    t.integer "season", default: 1, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "season"
     t.index ["category_id"], name: "index_seasons_on_category_id"
   end
 
@@ -109,6 +111,7 @@ ActiveRecord::Schema.define(version: 2023_04_11_140440) do
     t.string "first_name_kana", null: false
     t.string "nick_name", null: false
     t.integer "prefecture_id", null: false
+    t.string "phone_number", null: false
     t.text "introduction"
     t.boolean "is_deleted", default: false, null: false
     t.datetime "created_at", precision: 6, null: false
@@ -133,6 +136,7 @@ ActiveRecord::Schema.define(version: 2023_04_11_140440) do
   add_foreign_key "picture_comments", "users"
   add_foreign_key "pictures", "prefectures"
   add_foreign_key "pictures", "seasons"
+  add_foreign_key "pictures", "users"
   add_foreign_key "prefectures", "categories"
   add_foreign_key "seasons", "categories"
   add_foreign_key "users", "prefectures"

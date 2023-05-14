@@ -1,4 +1,15 @@
 class Admin::PicturesController < ApplicationController
+  layout 'layout_admin'
+  before_action :authenticate_admin!
+
+  def search
+    if params[:keyword].present?
+      @pictures = Photo.where('caption LIKE ?', "%#{params[:keyword]}%")
+      @keyword = params[:keyword]
+    else
+      @pictures = Picture.all
+    end
+  end
 
   def index
     @pictures = Picture.all

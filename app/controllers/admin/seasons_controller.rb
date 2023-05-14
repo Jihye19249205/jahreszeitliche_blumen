@@ -1,4 +1,7 @@
 class Admin::SeasonsController < ApplicationController
+  layout 'layout_admin'
+  before_action :authenticate_admin!
+  
   def index
     @seasons = Season.all
   end

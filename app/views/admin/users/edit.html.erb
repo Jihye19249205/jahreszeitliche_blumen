@@ -1,15 +1,15 @@
 <div class = "container">
   <div class = "row">
     <h2><%= @user.last_name + @user.first_name %>さんの情報詳細編集</h2>
-    <%= form_with model: @user, admin_user_path do |f| %>
+    <%= form_with model: @user, url: admin_user_path(@user) do |f| %>
     <table class = "table">
       <tr>
         <td>プロフィール画像：</td>
-        <td><%= f.file_field :image, accept: "image/*" %></td>
+        <td><%= f.file_field :profile_image, accept: "image/*" %></td>
       </tr>
       <tr>
         <td>ニックネーム：</td>
-        <td><%= f.text_field :nickname %></td>
+        <td><%= f.text_field :nick_name %></td>
       </tr>
       <tr>
         <td>紹介文：</td>
@@ -17,11 +17,11 @@
       </tr>
       <tr>
         <td>メールアドレス：</td>
-        <td><%= f.text_field :email %></td>
+        <td><%= f.email_field :email %></td>
       </tr>
       <tr>
         <td>在住：</td>
-        <td><%= f.text_field :prefecture %></td>
+        <td><%= f.collection_select :prefecture_id, Prefecture.all, :id, :prefecture %></td>
       </tr>
       <tr>
         <td>アカウントステータス：</td>

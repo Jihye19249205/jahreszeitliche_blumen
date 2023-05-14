@@ -2,25 +2,23 @@
 
 class Public::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
+  before_action :configure_sign_in_params, only: [:sign_in]
+  before_action :authenticate_user!, except: [:sign_in]
+  before_action :user_state, only: [:create]
 
   def guest_sign_in
-    user = User.find_or_created_by!(email: "guest@example.com") do |user|
-      user.password = SecureRandom.urlsafe_base64
-      user.confirmed_at = Time.now
-    end
+    user = User.guest
     sign_in user
-    redirect_to root_path, notice: "ゲストユーザーとしてログインしました。"
+    redirect_to top_path, notice: "ゲストユーザーとしてログインしました。"
   end
 
-  def after_sign_up_path_for
-    root_path
+  def after_sign_in_path_for(resource)
+    new_user_session_path
   end
 
-  def after_sign_in_path_for
-    user_path
+  def after_sign_out_path_for(resourse)
+    new_user_session_path
   end
-
-end
 
   # GET /resource/sign_in
   # def new
@@ -40,7 +38,20 @@ end
   # protected
 
   # If you have extra params to permit, append them to the sanitizer.
-  # def configure_sign_in_params
-  #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
-  # end
+  def configure_sign_in_params
+    devise_parameter_sanitizer.permit(:sign_in, keys: [:email])
+  end
+
+  def user_state
+    @user = User.find_by(email: params[:user][:email])
+    if @user
+     if (@user.valid_password?(params[:user][:password]) && (@user.is_deleted == true))
+       flash[:alert] = "退会済みです。再登録の上ご利用ください"
+       redirect_to new_user_session_path
+     else
+       flash[:notice] = "入力してください。"
+     end
+    end
+  end
+
 end

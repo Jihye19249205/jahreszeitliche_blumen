@@ -4,7 +4,7 @@
 
     <table>
     <%= form_with model: @user, url: user_registration_path do |f| %>
-      <%= render "publics/shared/error_messages", resource: resource %>
+      <%= render "public/shared/error_messages", resource: resource %>
 
       <tr>
         <th>名前：</th>
@@ -19,26 +19,32 @@
       </tr>
 
       <tr>
-        <td><%= f.label "ニックネーム" %><%= f.text_field :nick_name %></td>
+        <th><%= f.label "ニックネーム" %>：</th>
+        <td><%= f.text_field :nick_name %></td>
       </tr>
 
       <tr>
-        <th><%= f.label "メールアドレス" %></th>
+        <th><%= f.label "メールアドレス" %>：</th>
         <td><%= f.email_field :email, autofocus: true, autocomplete: "email" %></td>
       </tr>
 
       <tr>
-        <th><%= f.label "電話番号(ハイフンなし)" %></th>
+        <th><%= f.label "在住都道府県" %>：</th>
+        <td><%= f.collection_select :prefecture_id, Prefecture.all ,:id,:prefecture, { prompt: "選択してください"} %></td>
+      </tr>
+
+      <tr>
+        <th><%= f.label "電話番号(ハイフンなし)" %>：</th>
         <td><%= f.telephone_field :phone_number %></td>
       </tr>
 
       <tr>
-        <th><%= f.label "パスワード（6文字以上）" %></th>
+        <th><%= f.label "パスワード（6文字以上）" %>：</th>
         <td><%= f.password_field :password, autocomplete: "new-password" %></td>
       </tr>
 
       <tr>
-        <th><%= f.label "パスワード（確認用）" %></th>
+        <th><%= f.label "パスワード（確認用）" %>：</th>
         <td><%= f.password_field :password_confirmation, autocomplete: "new-password" %></td>
       </tr>
 

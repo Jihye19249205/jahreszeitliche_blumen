@@ -1,19 +1,27 @@
 class Public::PicturesController < ApplicationController
-  
-  def picture_select
-    
+  layout 'layout_user'
+  before_action :authenticate_user!
+
+  def search
+    if params[:keyword].present?
+      @pictures = Picture.where('caption LIKE ?', "%#{params[:keyword]}%")
+      @keyword = params[:keyword]
+    else
+      @pictures = Picture.all
+    end
   end
-  
+
   def new
     @picture = Picture.new
   end
 
   def create
     @picture = Picture.new(picture_params)
+    @picture.user_id = current_user.id
     # if params[:post]
-      if @picture.save(context: :publicize)
+      if @picture.save
         flash[:notice] = "投稿が成功しました！"
-        redirect_to user_path
+        redirect_to user_path(current_user)
       else
         flash[:notice] = "投稿に失敗しました。お手数ですが、入力内容を再度お確かめください。"
         render :new
@@ -61,7 +69,7 @@ class Public::PicturesController < ApplicationController
       :season_id,
       :prefecture_id,
       :spot_name,
-      :cartion,
+      :caption,
       :station,
       :flower_plant,
       :image

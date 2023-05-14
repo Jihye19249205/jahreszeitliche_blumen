@@ -4,17 +4,17 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :pictures, dependent: :destroy
-  has_many :picture_comments, dependent: :destroy
-  has_many :wanna_goes, dependent: :destroy
+    belongs_to :prefecture, optional: true
 
-  has_one_attached :profile_image
-  
-  def self.guest
-    find_or_create_by!(email: "guest@example.com") do |user|
-      user.password = SecureRandom.urlsafe_base64
-      user.confirmed_at = Time.now 
-    end
-  end
+    has_many :pictures, dependent: :destroy
+    has_many :picture_comments, dependent: :destroy
+    has_many :wanna_goes, dependent: :destroy
+    has_one_attached :profile_image
+
+    # validates :prefecture_id, :last_name, :first_name, :last_name_kana, :first_name_kana, :phone_number, :nick_name, presense: true
+
+    
+
+
 
 end

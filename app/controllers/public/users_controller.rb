@@ -1,17 +1,19 @@
 class Public::UsersController < ApplicationController
+  layout 'layout_user'
+  before_action :authenticate_user!
 
   def show
-    @pictures = @user.pictures
     @user = User.find(params[:id])
+    @pictures = @user.pictures.all
   end
-
+  
   def edit
     @user = User.find(params[:id])
   end
 
   def update
     @user = User.find(params[:id])
-    @user.update
+    @user.update(user_params)
     flash[:notice] = "登録情報が更新されました"
     redirect_to user_path(@user)
   end
@@ -41,7 +43,7 @@ class Public::UsersController < ApplicationController
       :phone_number,
       :email,
       :is_deleted,
-      :image
+      :profile_image
     )
   end
 
