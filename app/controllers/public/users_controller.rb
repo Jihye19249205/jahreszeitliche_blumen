@@ -2,11 +2,16 @@ class Public::UsersController < ApplicationController
   layout 'layout_user'
   before_action :authenticate_user!
 
+  def wanna_goes
+    wanna_goes = WannaGo.where(user_id: @user.id).pluck(:picture_id)
+    @wanna_go_pictures = Picture.find(wanna_goes)
+  end
+
   def show
     @user = User.find(params[:id])
     @pictures = @user.pictures.all
   end
-  
+
   def edit
     @user = User.find(params[:id])
   end
@@ -15,7 +20,7 @@ class Public::UsersController < ApplicationController
     @user = User.find(params[:id])
     @user.update(user_params)
     flash[:notice] = "登録情報が更新されました"
-    redirect_to user_path(@user)
+    redirect_to user_path(current_user)
   end
 
   def confirm_withdraw

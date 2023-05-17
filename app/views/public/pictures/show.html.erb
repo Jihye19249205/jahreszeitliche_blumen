@@ -3,7 +3,7 @@
   <div class = "row">
     <div class = "col-md-5">
       <h2>投稿詳細</h2>
-      <p><%= image_tag @picture.image, size: "300x250" %></p>
+      <p><%= image_tag @picture.image, size: "350x250" %></p>
       <p><%= @picture.created_at.strftime('%Y/%m/%d %H:%M') %></p>
       <% if @picture.wanna_gone_by?(current_user) %>
       <p>
@@ -17,8 +17,9 @@
           行ってみたい！<%= @picture.wanna_goes.count %> 件
         <% end %>
       </p>
+      <% end %>
       <p>コメント：<%= @picture.picture_comments.count %>件</p>
-      <%= form_with model: @picture_comment, picture_path(@picture.id) do |f| %>
+      <%= form_with model: [@picture, @picture_comment] do |f| %>
       <p><%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %></p>
       <p><%= f.submit "コメントを送信" %></p>
       <% end %>
@@ -31,7 +32,7 @@
         </tr>
         <tr>
           <td>撮影時期</td>
-          <td><%= @picture.season %></td>
+          <td><%= @picture.season.season %></td>
         </tr>
         <tr>
           <td>花・植物の種類：</td>
@@ -39,7 +40,7 @@
         </tr>
         <tr>
           <td>都道府県：</td>
-          <td><%= @picture.prefecture %></td>
+          <td><%= @picture.prefecture.prefecture %></td>
         </tr>
         <tr>
           <td>最寄駅：</td>
@@ -50,13 +51,22 @@
           <td><%= @picture.caption %></td>
         </tr>
         <tr>
-          <td><%= link_to "投稿を編集", edit_picture_path(@picture) %></td>
-          <% if user == current_user %>
-          <td><%= link_to "投稿を削除", picture_path, method: :delete, "data-confirm" => "本当に削除しますか？" %></td>
+          <% if @picture.user == current_user %>
+          <td><%= link_to "投稿を編集", edit_picture_path(@picture), class: "btn btn-success" %></td>
+          <td><%= link_to "投稿を削除", picture_path, method: :delete, class: "btn btn-danger", "data-confirm" => "本当に削除しますか？" %></td>
           <% else %>
           <td></td>
           <% end %>
         </tr>
+        <% @picture.picture_comments.each do |picture_comment| %>
+        <tr>
+          <td><%= picture_comment.user.nick_name %></td>
+          <td><%= picture_comment.comment %></td>
+          <% if picture_comment.user == current_user %>
+          <td><%= link_to "コメントを削除", picture_picture_comment_path(picture_comment.picture, picture_comment), method: :delete %></td>
+          <% end %>
+        </tr>
+        <% end %>
       </table>
     </div>
   </div>

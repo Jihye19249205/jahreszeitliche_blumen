@@ -18,16 +18,13 @@ class Public::PicturesController < ApplicationController
   def create
     @picture = Picture.new(picture_params)
     @picture.user_id = current_user.id
-    # if params[:post]
       if @picture.save
         flash[:notice] = "投稿が成功しました！"
-        redirect_to user_path(current_user)
+        redirect_to picture_path(@picture.id)
       else
         flash[:notice] = "投稿に失敗しました。お手数ですが、入力内容を再度お確かめください。"
         render :new
       end
-    # else
-    #   if @picture.update
   end
 
   def index
@@ -38,7 +35,6 @@ class Public::PicturesController < ApplicationController
   def show
     @picture = Picture.find(params[:id])
     @picture_comment = PictureComment.new
-    @picture_comments = PictureComments(params[:picture_id])
   end
 
   def edit
@@ -47,9 +43,9 @@ class Public::PicturesController < ApplicationController
 
   def update
     @picture = Picture.find(params[:id])
-    if @picture.update
+    if @picture.update(picture_params)
       flash[:notice] = "投稿編集が完了しました！"
-      redirect_to user_path
+      redirect_to picture_path(@picture.id)
     else
       render :edit
     end

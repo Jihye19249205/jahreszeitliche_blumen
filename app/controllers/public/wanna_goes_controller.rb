@@ -1,10 +1,6 @@
-class WannaGoesController < ApplicationController
+class Public::WannaGoesController < ApplicationController
   layout 'layout_user'
   before_action :authenticate_user!
-
-  def index
-    @wanna_goes = WannaGoes.all(current_user)
-  end
 
   def create
     picture = Picture.find(params[:picture_id])
@@ -19,6 +15,4 @@ class WannaGoesController < ApplicationController
     wanna_go.destroy
     redirect_to picture_path(picture)
   end
-  
-  
 end

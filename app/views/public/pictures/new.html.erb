@@ -1,9 +1,9 @@
 <%= flash[:notice] %>
 <div class = "container">
+  <%= form_with model: @picture, url: pictures_path do |f| %>
   <div class = "row">
     <div class = "col-md-5">
       <h2>新規投稿</h2>
-      <%= form_with model: @picture, url: pictures_path do |f| %>
       <p>写真選択：</p>
       <p><%= f.file_field :image, accept: "image/*" %></p>
     </div>
@@ -38,9 +38,9 @@
           <td><%= f.submit "投稿を保存", class: "btn btn-primary" %></td>
           <td></td>
         </tr>
-      <% end %>
       </table>
     </div>
     </div>
   </div>
+  <% end %>
 </div>

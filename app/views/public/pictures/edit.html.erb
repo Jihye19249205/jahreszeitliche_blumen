@@ -7,8 +7,8 @@
     </div>
     <div class = "col-md-5">
       <div class = "col-md-5">
+      <%= form_with model: @picture, url: picture_path do |f| %>
       <table class = "table">
-        <%= form_with model: @picture, url: picture_path do |f| %>
         <tr>
           <td><%= f.label "撮影スポット(必須):" %></td>
           <td><%= f.text_field :spot_name %></td>
@@ -33,8 +33,8 @@
           <td><%= f.submit "編集を保存", class: "btn btn-primary" %></td>
           <td></td>
         </tr>
-        <% end %>
       </table>
+      <% end %>
     </div>
     </div>
   </div>

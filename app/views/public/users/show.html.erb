@@ -13,15 +13,37 @@
         </div>
         <table>
           <tr><td>ユーザ名：</td><td><%= @user.nick_name %></td></tr>
-          <tr><td>在住：</td><td><%= @user.prefecture %></td></tr>
+          <tr><td>在住：</td><td><%= @user.prefecture.prefecture %></td></tr>
           <tr><td><%= @user.introduction %></td></tr>
           <tr><td><%= link_to "ユーザ情報編集", edit_user_path(@user) %></td></tr>
         </table>
       </div>
       <div class = "col-md-5">
         <% @pictures.each do |picture| %>
-          <p><%= image_tag @user.picture %></p>
-          <p><%= @user.picture.created_at.strftime('%Y/%m/%d %H:%M') %></p>
+          <p>
+            <%= link_to picture_path(picture) do %>
+              <%= image_tag picture.get_image, size: "350x250" %>
+            <% end %>
+          </p>
+          <p><%= picture.created_at.strftime('%Y/%m/%d %H:%M') %></p>
+          <!--↓行ってみたい件数表示↓-->
+          <p>
+            <% if picture.wanna_gone_by?(current_user) %>
+            <p>
+              <%= link_to picture_wanna_goes_path(picture), method: :delete do %>
+                行ってみたい！<%= picture.wanna_goes.count %> 件
+              <% end %>
+            </p>
+            <% else %>
+            <p>
+              <%= link_to picture_wanna_goes_path(picture), method: :post do %>
+                行ってみたい！<%= picture.wanna_goes.count %> 件
+              <% end %>
+            </p>
+            <% end %>
+            <!--↓コメント件数表示↓-->
+            <p>コメント：<%= picture.picture_comments.count %> 件</p>
+          </p>
         <% end %>
       </div>
     </div>

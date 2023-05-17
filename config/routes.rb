@@ -13,7 +13,7 @@ Rails.application.routes.draw do
 
     root to: "homes#top"
     resources :pictures, only: [:index, :show, :edit, :update, :destroy] do
-      resource :picture_comments, only: [:edit, :update, :destroy]
+      resources :picture_comments, only: [:edit, :update, :destroy]
       member do
         get 'search'
       end
@@ -33,15 +33,15 @@ Rails.application.routes.draw do
   scope module: :public do
     devise_scope :user do
       get 'users/guest_sign_in', to: 'sessions#guest_sign_in'
-      delete 'users/sign_out', to: 'devise/sessions#destroy'
+      delete 'users/sign_out', to: 'sessions#destroy'
     end
 
     root to: "homes#index"
     get '/top' => "homes#top", as: 'top'
     get '/about' => "homes#about", as: 'about'
     resources :pictures do
-      resource :wanna_goes, only: [:destroy, :create, :index]
-      resource :picture_comments, only: [:index, :new, :create]
+      resource :wanna_goes, only: [:destroy, :create]
+      resources :picture_comments, only: [:create, :destroy]
       collection do
         get 'search'
       end
@@ -50,6 +50,9 @@ Rails.application.routes.draw do
       collection do
         get 'confirm_withdraw'
         patch 'withdraw'
+      end
+      member do
+        get 'wanna_goes'
       end
     end
     resources :categories, only: [:index] do
