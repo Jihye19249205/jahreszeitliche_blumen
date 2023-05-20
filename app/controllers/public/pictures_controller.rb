@@ -3,12 +3,15 @@ class Public::PicturesController < ApplicationController
   before_action :authenticate_user!
 
   def search
-    if params[:keyword].present?
-      @pictures = Picture.where('caption LIKE ?', "%#{params[:keyword]}%")
-      @keyword = params[:keyword]
+    search_word = params[:word]
+    @pictures = Picture.where("flower_plant LIKE ? ", "%#{search_word}%").order('id DESC').limit(3)
+    if @pictures.size > 0
+      flash[:notice] = "#{@pictures.count}件の投稿が見つかりました"
     else
-      @pictures = Picture.all
+      flash[:alert] = "投稿が見つかりませんでした"
     end
+
+    render 'index'
   end
 
   def new
@@ -59,6 +62,7 @@ class Public::PicturesController < ApplicationController
   end
 
   private
+
 
   def picture_params
     params.require(:picture).permit(

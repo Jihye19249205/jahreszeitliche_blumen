@@ -1,3 +1,4 @@
+<%= flash[:alert] %>
 <div class = "container">
   <div class = "row">
     <h2>マイページ情報編集</h2>
@@ -9,8 +10,12 @@
       <tr><td>メールアドレス：</td><td><%= f.text_field :email %></td></tr>
       <tr><td>在住都道府県：</td><td><%= f.collection_select :prefecture_id, Prefecture.all ,:id,:prefecture %></td></tr>
       <tr>
+        <% if @user.email == 'guest@example.com' %>
+        <td></td>
+        <% else %>
         <td><%= f.submit "編集内容を保存" %></td>
-         <td><%= link_to "アカウント削除", confirm_withdraw_users_path, class: "btn btn-danger" %></td>
+        <td><%= link_to "アカウント削除", confirm_withdraw_users_path, class: "btn btn-danger" %></td>
+        <% end %>
       </tr>
     </table>
     <% end %>

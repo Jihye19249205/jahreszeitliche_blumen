@@ -7,10 +7,6 @@ Rails.application.routes.draw do
 
   namespace :admin do
 
-    devise_scope :admin do
-      get 'admin/sign_out', to: 'sessions#destroy'
-    end
-
     root to: "homes#top"
     resources :pictures, only: [:index, :show, :edit, :update, :destroy] do
       resources :picture_comments, only: [:edit, :update, :destroy]

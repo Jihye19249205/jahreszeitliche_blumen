@@ -16,6 +16,7 @@
           <tr><td>在住：</td><td><%= @user.prefecture.prefecture %></td></tr>
           <tr><td><%= @user.introduction %></td></tr>
           <tr><td><%= link_to "ユーザ情報編集", edit_user_path(@user) %></td></tr>
+          <tr><td><%= link_to "行ってみたい！をした投稿一覧", wanna_goes_user_path(current_user) %></td></tr>
         </table>
       </div>
       <div class = "col-md-5">

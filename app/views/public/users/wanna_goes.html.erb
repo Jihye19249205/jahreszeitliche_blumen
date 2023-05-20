@@ -1,0 +1,17 @@
+<div class = "container">
+  <div class = "row">
+    <h2>行ってみたい!をした投稿一覧</h2>
+    <% @wanna_go_pictures.each do |picture| %>
+    <table class = "table table-hover table-inverse">
+      <tr>
+        <td>
+        <%= link_to picture_path(@wanna_go_pictures) do %>
+          <%= image_tag picture.image, size: "100x80" %>
+        <% end %>
+        </td>
+        <td>投稿者：<%= picture.user.nick_name %>さん</td>
+      </tr>
+    </table>
+    <% end %>
+  </div>
+</div>

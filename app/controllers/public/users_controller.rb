@@ -1,9 +1,11 @@
 class Public::UsersController < ApplicationController
   layout 'layout_user'
   before_action :authenticate_user!
+  before_action :set_user, only: [:wanna_goes]
 
   def wanna_goes
-    wanna_goes = WannaGo.where(user_id: @user.id).pluck(:picture_id)
+    @user = User.find(params[:id])
+    wanna_goes= WannaGo.where(user_id: @user.id).pluck(:picture_id)
     @wanna_go_pictures = Picture.find(wanna_goes)
   end
 
@@ -18,9 +20,14 @@ class Public::UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    @user.update(user_params)
-    flash[:notice] = "登録情報が更新されました"
-    redirect_to user_path(current_user)
+    if @user.email == 'guest@example.com'
+      flash[:alert] = "ゲストユーザーはユーザー情報の編集はできません"
+      render :edit
+    else
+      @user.update(user_params)
+      flash[:notice] = "登録情報が更新されました"
+      redirect_to user_path(current_user)
+    end
   end
 
   def confirm_withdraw
@@ -28,10 +35,15 @@ class Public::UsersController < ApplicationController
 
   def withdraw
     @user = current_user
-    @user.update(is_deleted: true)
-    reset_session
-    redirect_to root_path
-    flash[:notice] = "ご利用いただきありがとうございました。"
+    if @user.email == 'guest@example.com'
+      flash[:alert] = "ゲストユーザはアカウント削除できません"
+      render :show
+    else
+      @user.update(is_deleted: true)
+      reset_session
+      redirect_to root_path
+      flash[:notice] = "ご利用いただきありがとうございました。"
+    end
   end
 
   private
@@ -48,8 +60,13 @@ class Public::UsersController < ApplicationController
       :phone_number,
       :email,
       :is_deleted,
-      :profile_image
+      :profile_image,
+      :picture_id
     )
+  end
+
+  def set_user
+    @user = User.find(params[:id])
   end
 
 end

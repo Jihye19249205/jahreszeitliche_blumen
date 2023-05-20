@@ -5,20 +5,24 @@
       <table class = "table">
         <tr>
           <td>
-            <%= link_to admin_picture do %>
-              <%= image_tag picture.image, size: "200x300" %>
+            <%= link_to admin_pictures_path do %>
+              <%= image_tag picture.image, size: "350x250" %>
             <% end %>
           </td>
         </tr>
         <tr>
           <td>
-            撮影者：<%= picture.user.nickname %>さん
+            撮影者：<%= picture.user.nick_name %>さん
           </td>
         </tr>
         <tr>
           <td>
-            <!--wanna_go実装後に記述↓-->
-            行ってみたいX件
+            行ってみたい!：<%= picture.wanna_goes.count %>件
+          </td>
+        </tr>
+        <tr>
+          <td>
+            コメント：<%= picture.picture_comments.count %>件
           </td>
         </tr>
       </table>

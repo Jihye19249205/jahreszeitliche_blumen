@@ -3,12 +3,7 @@ class Admin::PicturesController < ApplicationController
   before_action :authenticate_admin!
 
   def search
-    if params[:keyword].present?
-      @pictures = Photo.where('caption LIKE ?', "%#{params[:keyword]}%")
-      @keyword = params[:keyword]
-    else
-      @pictures = Picture.all
-    end
+    
   end
 
   def index
@@ -35,7 +30,7 @@ class Admin::PicturesController < ApplicationController
   private
 
   def picture_params
-    params.require(:picture).permit(:spot_name, :caption, :station)
+    params.require(:picture).permit(:spot_name, :caption, :station, :image)
   end
 
 end

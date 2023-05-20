@@ -1,6 +1,6 @@
 class Public::HomesController < ApplicationController
   layout 'layout_user'
-  before_action :authenticate_user!
+  # before_action :authenticate_user!
 
   def index
   end

@@ -4,5 +4,7 @@ class Public::CategoriesController < ApplicationController
 
   def index
     @categories = Category.all
+    # @prefectures = @categories.prefecture.all
+    # @seasons = @categories.season.all
   end
 end
