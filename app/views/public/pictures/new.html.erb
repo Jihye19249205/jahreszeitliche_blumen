@@ -20,7 +20,7 @@
         </tr>
         <tr>
           <td><%= f.label "都道府県(必須):" %></td>
-          <td><%= f.collection_select :prefecture_id, Prefecture.all, :id, :prefecture, {disabled: 9..48} %></td>
+          <td><%= f.collection_select :prefecture_id, Prefecture.where(id:1..8), :id, :prefecture %></td>
         </tr>
         <tr>
           <td><%= f.label "最寄駅" %></td>

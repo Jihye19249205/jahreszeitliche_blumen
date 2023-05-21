@@ -4,14 +4,20 @@ class Public::PicturesController < ApplicationController
 
   def search
     search_word = params[:word]
-    @pictures = Picture.where("flower_plant LIKE ? ", "%#{search_word}%").order('id DESC').limit(3)
+    @pictures = Picture.where("flower_plant LIKE ?", "%#{search_word}%")
+    @pictures = @pictures.where("season_id LIKE ?", "%#{params[:season_id]}%")
+    @pictures = @pictures.where("prefecture_id LIKE ?", "%#{params[:prefecture_id]}%")
     if @pictures.size > 0
       flash[:notice] = "#{@pictures.count}件の投稿が見つかりました"
     else
+      @pictures = Picture.all
       flash[:alert] = "投稿が見つかりませんでした"
     end
-
     render 'index'
+  end
+
+  def index
+    @pictures = Picture.all
   end
 
   def new
@@ -28,11 +34,6 @@ class Public::PicturesController < ApplicationController
         flash[:notice] = "投稿に失敗しました。お手数ですが、入力内容を再度お確かめください。"
         render :new
       end
-  end
-
-  def index
-    @pictures = Picture.all
-    @pictures = Picture.order('id DESC').limit(3)
   end
 
   def show

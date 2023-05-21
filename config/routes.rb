@@ -12,6 +12,7 @@ Rails.application.routes.draw do
       resources :picture_comments, only: [:edit, :update, :destroy]
       member do
         get 'search'
+        get 'picture_comments', as: 'comments'
       end
     end
     resources :categories, only: [:index, :create, :edit, :update]

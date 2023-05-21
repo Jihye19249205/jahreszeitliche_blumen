@@ -8,7 +8,7 @@ class Admin::UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @pictures = @user.picture.all
+    @pictures = @user.pictures.all
   end
 
   def edit
@@ -33,6 +33,7 @@ class Admin::UsersController < ApplicationController
       :first_name,
       :last_name_kana,
       :first_name_kana,
+      :nick_name,
       :prefecture,
       :phone_number,
       :email,

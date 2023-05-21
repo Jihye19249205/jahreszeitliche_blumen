@@ -24,18 +24,10 @@ class Picture < ApplicationRecord
     image
   end
 
-  # def self.looks(search, word)
-  #   if search == "perfect_match"
-  #     @picture = Picture.where("title LIKE?","#{word}")
-  #   elsif search == "forward_match"
-  #     @book = Book.where("title LIKE?","#{word}%")
-  #   elsif search == "backward_match"
-  #     @book = Book.where("title LIKE?","%#{word}")
-  #   elsif search == "partial_match"
-  #     @book = Book.where("title LIKE?","%#{word}%")
-  #   else
-  #     @book = Book.all
-  #   end
-  # end
+  def self.search_for(content, method)
+    if method == 'perfect'
+        Picture.where(prefecture, season: content)
+    end
+  end
 
 end

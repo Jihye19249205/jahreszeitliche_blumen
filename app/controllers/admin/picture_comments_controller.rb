@@ -23,7 +23,7 @@ class Admin::PictureCommentsController < ApplicationController
   private
 
   def picture_comment_params
-    params.require(:picture_comment).permit(:comment)
+    params.require(:picture_comment).permit(:comment, :picture_id)
   end
 
 end

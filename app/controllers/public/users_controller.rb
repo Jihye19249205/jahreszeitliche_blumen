@@ -35,15 +35,10 @@ class Public::UsersController < ApplicationController
 
   def withdraw
     @user = current_user
-    if @user.email == 'guest@example.com'
-      flash[:alert] = "ゲストユーザはアカウント削除できません"
-      render :show
-    else
-      @user.update(is_deleted: true)
-      reset_session
-      redirect_to root_path
-      flash[:notice] = "ご利用いただきありがとうございました。"
-    end
+    @user.update(is_deleted: true)
+    reset_session
+    redirect_to root_path
+    flash[:notice] = "ご利用いただきありがとうございました。"
   end
 
   private

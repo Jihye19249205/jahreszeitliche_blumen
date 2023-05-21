@@ -1,26 +1,32 @@
 <div class = "container">
   <div class = "row">
     <div>
-      <h2><%= @picture.user %>さんの投稿詳細</h2>
+      <h2><%= @picture.user.nick_name %>さんの投稿詳細</h2>
       <div class = "container">
-        <p><%= image_tag @picture.image, size: "300 x 200" %></p>
-        <p>投稿日時:<%= picture.created_at.strftime('%Y/%m/%d %H:%M') </p>
-        <p>行ってみたい<%= picture.wanna_go.count %></p>
+        <p><%= image_tag @picture.image, size: "350x250" %></p>
+        <p>投稿日時:<%= @picture.created_at.strftime('%Y/%m/%d %H:%M') %></p>
+        <p>行ってみたい！<%= @picture.wanna_goes.count %>件</p>
       </div>
     </div>
     <div>
-      <table class = "table">
+      <table>
         <tr><td>撮影スポット：</td><td><%= @picture.spot_name %></td></tr>
-        <tr><td>都道府県：</td><td><%= @picture.prefecture %></td></tr>
+        <tr><td>都道府県：</td><td><%= @picture.prefecture.prefecture %></td></tr>
         <tr><td>最寄駅：</td><td><%= @picture.station %></td></tr>
-        <tr><td>撮影時期：</td><td><%= @picture.season %></td></tr>
+        <tr><td>撮影時期：</td><td><%= @picture.season.season %></td></tr>
         <tr><td>花・植物の種類：</td><td><%= @picture.flower_plant %></td></tr>
         <tr><td>キャプション：</td></tr>
         <tr><td><%= @picture.caption %></td></tr>
         <tr>
-          <td><%= link_to "キャプションを編集", edit_admin_picture_path(@picture) %></td>
-          <td><%= link_to "投稿を削除", admin_picture_path(@picture), method: :delete, "data-confirm" => "本当に削除しますか？" %></td>
+          <td><%= link_to "キャプションを編集", edit_admin_picture_path(@picture), class: "btn btn-success" %></td>
+          <td><%= link_to "投稿を削除", admin_picture_path(@picture), class: "btn btn-danger", method: :delete, "data-confirm" => "本当に削除しますか？" %></td>
         </tr>
+        <tr>
+          <td><%= link_to "コメント一覧", comments_admin_picture_path, class: "btn" %></td>
+        </tr>
+        <table class = "table">
+          <tr></tr>
+        </table>
       </table>
     </div>
   </div>

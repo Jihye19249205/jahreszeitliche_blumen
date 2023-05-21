@@ -1,0 +1,18 @@
+<div class = "container">
+  <div class = "row">
+    <h2><%= @picture_comments.user.nick_name %>さんの投稿コメント一覧</h2>
+  </div>
+  <% @picture_comments.each do |picture_comment| %>
+  <div class = "row">
+    <table>
+      <tr>
+        <td><%= picture_comment.user.nick_name %></td>
+        <td><%= picture_comment.created_at.strftime('%Y/%m/%d %H:%M') %></td>
+      </tr>
+      <tr>
+        <td><%= picture_comment.comment %></td>
+      </tr>
+    </table>
+  </div>
+  <% end %>
+</div>

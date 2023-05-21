@@ -15,28 +15,27 @@
       <table class = "table">
         <tr><td>ニックネーム：</td><td><%= @user.nick_name %></td></tr>
         <tr><td>メールアドレス：</td><td><%= @user.email %></td></tr>
-        <tr><td>在住：</td><td><%= @user.prefecture %></td></tr>
+        <tr><td>在住：</td><td><%= @user.prefecture.prefecture %></td></tr>
         <tr><td>アカウントステータス：</td><td><%= @user.is_deleted %></td></tr>
         <tr><td><%= link_to "情報編集", edit_admin_user_path, class: "btn btn-success" %></td></tr>
       </table>
     </div>
     <div>
       <h2><%= @user.last_name + @user.first_name %>さんの投稿一覧</h2>
+      <% @pictures.each do |picture| %>
       <table>
-        <% pictures.each do |picture| %>
         <tr>
           <td>
-            <% if @user.picture.image.attached? %>
-              <%= image_tag user.picture.image, size: "200x150" %>
-            <% else %>
-              <%= image_tag 'no_image', size: "200x150" %>
+            <%= link_to admin_picture_path(picture) do %>
+              <%= image_tag picture.image, size: "200x150" %>
             <% end %>
           </td>
         </tr>
-        <tr><td>投稿日時：</td><td><%= user.picture.created_at.strftime('%Y/%m/%d %H:%M') %></td></tr>
-        <tr><td>行ってみたい：</td><td><%= user.picture.wanna_go.count %>件</td></tr>
-        <% end %>
+        <tr><td>投稿日時：</td><td><%= picture.created_at.strftime('%Y/%m/%d %H:%M') %></td></tr>
+        <tr><td>行ってみたい！：</td><td><%= picture.wanna_goes.count %>件</td></tr>
+        <tr><td>コメント：<%= picture.picture_comments.count %>件</td></tr>
       </table>
+      <% end %>
     </div>
   </div>
 </div>
