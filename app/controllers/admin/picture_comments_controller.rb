@@ -8,9 +8,10 @@ class Admin::PictureCommentsController < ApplicationController
 
   def update
     @picture_comment = PictureComment.find(params[:id])
-    @picture_comment.update
+    picture = @picture_comment.picture
+    @picture_comment.update(picture_comment_params)
     flash[:notice] = "正常に更新されました"
-    redirect_to admin_edit_picture_path
+    redirect_to admin_picture_path(picture)
   end
 
   def destroy

@@ -2,10 +2,10 @@
   <div class = "row">
     <h2>コメント編集</h2>
     <div>
-      <%= form_with model: @picture_comment, admin_picture_picture_comments do |f| %>
+      <%= form_with model: @picture_comment, url: admin_picture_picture_comment_path(@picture_comment) do |f| %>
       <h4>コメント：</h4>
       <p><%= f.text_area :comment %></p>
-      <p><%= f.submit "編集内容を保存" %></p>
+      <p><%= f.submit "編集内容を保存", class: "btn btn-primary" %></p>
       <% end %>
     </div>
   </div>

@@ -34,6 +34,20 @@
         <tr><td>投稿日時：</td><td><%= picture.created_at.strftime('%Y/%m/%d %H:%M') %></td></tr>
         <tr><td>行ってみたい！：</td><td><%= picture.wanna_goes.count %>件</td></tr>
         <tr><td>コメント：<%= picture.picture_comments.count %>件</td></tr>
+        <% @picture_comments.each do |picture_comment| %>
+        <table>
+          <tr>
+            <td><%= picture_comment.user.nick_name %></td>
+            <td><%= picture_comment.created_at.strftime('%Y/%m/%d %H:%M') %></td>
+          </tr>
+          <tr>
+            <td><%= picture_comment.comment %></td>
+          </tr>
+        </table>
+        <% end %>
+        <tr>
+          <td></td>
+        </tr>
       </table>
       <% end %>
     </div>

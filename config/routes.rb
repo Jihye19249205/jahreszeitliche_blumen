@@ -30,7 +30,6 @@ Rails.application.routes.draw do
   scope module: :public do
     devise_scope :user do
       get 'users/guest_sign_in', to: 'sessions#guest_sign_in'
-      delete 'users/sign_out', to: 'sessions#destroy'
     end
 
     root to: "homes#index"

@@ -1,7 +1,11 @@
 <div class = "container">
   <div class = "row">
-    <h2>※ロゴ</h2>
-    <%= link_to "ユーザログイン", new_user_session_path, class: "btn btn-primary col-6" %>
-    <%= link_to "ゲストログイン（閲覧用）", users_guest_sign_in_path, class: "btn btn-success col-6" %>
+    <h1><img src="assets/images/logo.png" alt="ロゴ"></h1>
+  </div>
+  <div class = "row">
+    <table class = "col-lg-8 text-center">
+      <tr><td><%= link_to "ユーザログイン", new_user_session_path, class: "btn btn-primary col-6" %></td></tr>
+      <tr><td><%= link_to "ゲストログイン（閲覧用）", users_guest_sign_in_path, class: "btn btn-success col-6" %></td></tr>
+    </table>
   </div>
 </div>

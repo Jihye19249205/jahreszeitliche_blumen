@@ -22,10 +22,7 @@ class Admin::PicturesController < ApplicationController
 
   def show
     @picture = Picture.find(params[:id])
-  end
-
-  def picture_comments
-    @picture_comments = PictureComment.all
+    @picture_comments = @picture.picture_comments.all
   end
 
   def edit
