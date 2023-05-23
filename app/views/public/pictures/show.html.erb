@@ -21,7 +21,7 @@
       <% end %>
       <p>コメント：<%= @picture.picture_comments.count %>件</p>
       <%= form_with model: [@picture, @picture_comment] do |f| %>
-      <p><%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %></p>
+      <p><%= f.text_area :comment, rows: '5', placeholder: "コメントをここに", class: "col-12" %></p>
       <p><%= f.submit "コメントを送信", class: "btn btn-primary" %></p>
       <% end %>
     </div>
@@ -67,7 +67,7 @@
           <td><%= picture_comment.user.nick_name %></td>
           <td><%= picture_comment.comment %></td>
           <% if picture_comment.user == current_user %>
-          <td><%= link_to "コメントを削除", picture_picture_comment_path(picture_comment.picture, picture_comment), method: :delete %></td>
+          <td><%= link_to "コメントを削除", picture_picture_comment_path(picture_comment.picture, picture_comment), class: "btn btn-secondary", method: :delete %></td>
           <% end %>
         </tr>
         <% end %>

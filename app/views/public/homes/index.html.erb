@@ -1,11 +1,15 @@
-<div class = "container">
+<div class = "container col-lg-">
   <div class = "row">
-    <h1><img src="assets/images/logo.png" alt="ロゴ"></h1>
+    <div class = "logo col-lg-">
+      <h1>
+        <%= image_tag asset_path('logo_transparent.png'), size: "400x300" %>
+      </h1>
+    </div>
   </div>
   <div class = "row">
     <table class = "col-lg-8 text-center">
-      <tr><td><%= link_to "ユーザログイン", new_user_session_path, class: "btn btn-primary col-6" %></td></tr>
-      <tr><td><%= link_to "ゲストログイン（閲覧用）", users_guest_sign_in_path, class: "btn btn-success col-6" %></td></tr>
+      <tr><td><%= link_to "ユーザログイン", new_user_session_path, class: "btn btn-primary col-8" %></td></tr>
+      <tr><td><%= link_to "ゲストログイン（閲覧用）", users_guest_sign_in_path, class: "btn btn-success col-8" %></td></tr>
     </table>
   </div>
 </div>

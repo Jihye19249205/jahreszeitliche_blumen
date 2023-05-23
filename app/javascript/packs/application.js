@@ -13,6 +13,8 @@ import "popper.js";
 import "bootstrap";
 import "../stylesheets/application"
 import '@fortawesome/fontawesome-free/js/all'
+import '../stylesheets/layout_admin.css'
+import '../stylesheets/layout_user.css'
 
 
 Rails.start()

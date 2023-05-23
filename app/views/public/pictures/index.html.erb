@@ -5,20 +5,16 @@
       <tr>
         <td>
           <%= flash[:notice] %>
-          <%= flash[:alert] %>
         </td>
       </tr>
-      <tr><th>キーワード検索</th></tr>
       <tr>
+        <th>キーワード検索</th>
         <td><%= f.text_field :word, placeholder: "花・植物で検索", class: "form-box" %></td>
         <td><%= f.submit "検索", class: "btn btn-success" %></td>
       </tr>
-      <tr><th>タグ検索</th></tr>
       <tr>
+        <th>タグ検索</th>
         <td><%= f.collection_select :season_id, Season.where(id:2..5), :id, :season, prompt: "季節を選択してください" %></td>
-        <td><%= f.submit "検索", class: "btn btn-success" %></td>
-      </tr>
-      <tr>
         <td><%= f.collection_select :prefecture_id, Prefecture.where(id:2..8), :id, :prefecture, prompt: "都道府県を選択してください" %></td>
         <td><%= f.submit "検索", class: "btn btn-success" %></td>
       </tr>
@@ -28,22 +24,24 @@
   <div class = "row">
     <h2>投稿一覧(新着順)</h2>
   </div>
-  <div class = "row">
-    <% @pictures.each do |picture| %>
-    <div class = "col-md-3">
-      <p>
-      <%= link_to picture_path(picture) do %>
-        <%= image_tag picture.image, size: "350x250" %>
+  <div class = "card-body">
+    <div class = "row">
+      <% @pictures.each do |picture| %>
+      <div class = "card w-50 mx-auto mt-4 shadow-lg">
+        <p class = >
+        <%= link_to picture_path(picture) do %>
+          <%= image_tag picture.image, class:"card-img-top"; %>
+        <% end %>
+        </p>
+        <p>撮影者：<%= picture.user.nick_name %>さん</p>
+        <p>撮影時期：<%= picture.season.season %></p>
+        <p>都道府県：<%= picture.prefecture.prefecture %></p>
+        <p>花・植物の名前：<%= picture.flower_plant %></p>
+        <p>行ってみたい!：<%= picture.wanna_goes.count %>件</p>
+        <p>コメント：<%= picture.picture_comments.count %>件</p>
+      </div>
       <% end %>
-      </p>
-      <p>撮影者：<%= picture.user.nick_name %>さん</p>
-      <p>撮影時期：<%= picture.season.season %></p>
-      <p>都道府県：<%= picture.prefecture.prefecture %></p>
-      <p>花・植物の名前：<%= picture.flower_plant %></p>
-      <p>行ってみたい!：<%= picture.wanna_goes.count %>件</p>
-      <p>コメント：<%= picture.picture_comments.count %>件</p>
     </div>
-    <% end %>
   </div>
 </div>
 

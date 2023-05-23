@@ -10,8 +10,7 @@ class Public::PicturesController < ApplicationController
     if @pictures.size > 0
       flash[:notice] = "#{@pictures.count}件の投稿が見つかりました"
     else
-      @pictures = Picture.all
-      flash[:alert] = "投稿が見つかりませんでした"
+      flash[:notice] = "投稿が見つかりませんでした"
     end
     render 'index'
   end
@@ -43,10 +42,16 @@ class Public::PicturesController < ApplicationController
 
   def edit
     @picture = Picture.find(params[:id])
+    unless @picture.user.id == current_user.id
+      redirect_to pictures_path
+    end
   end
 
   def update
     @picture = Picture.find(params[:id])
+    unless @picture.user.id == current_user.id
+      redirect_to pictures_path
+    end
     if @picture.update(picture_params)
       flash[:notice] = "投稿編集が完了しました！"
       redirect_to picture_path(@picture.id)

@@ -7,6 +7,9 @@ class Public::UsersController < ApplicationController
     @user = User.find(params[:id])
     wanna_goes= WannaGo.where(user_id: @user.id).pluck(:picture_id)
     @wanna_go_pictures = Picture.find(wanna_goes)
+    unless @user.id == current_user.id
+      redirect_to pictures_path
+    end
   end
 
   def show
@@ -16,10 +19,16 @@ class Public::UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
+    unless @user.id == current_user.id
+      redirect_to pictures_path
+    end
   end
 
   def update
     @user = User.find(params[:id])
+    unless @user.id == current_user.id
+      redirect_to pictures_paths
+    end
     if @user.email == 'guest@example.com'
       flash[:alert] = "ゲストユーザーはユーザー情報の編集はできません"
       render :edit

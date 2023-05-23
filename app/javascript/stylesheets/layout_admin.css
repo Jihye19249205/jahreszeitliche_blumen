@@ -1,0 +1,17 @@
+header {
+  background-color: #FFDBC9;
+}
+
+nav {
+  color: #002200;
+}
+
+main {
+  display: flex;
+  background-color: #FFDBC9;
+  justify-content: center;
+}
+
+footer {
+  background-color: #AEFFBD;
+}

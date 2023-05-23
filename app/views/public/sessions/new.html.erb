@@ -1,7 +1,8 @@
 <div class = "container">
   <div class = "row">
-    <h2>※ロゴ</h2>
-
+    <h1><%= image_tag asset_path('logo_transparent.png'), size: "400x300" %></h1>
+  </div>
+  <div class = "row">
     <%= form_with model: @user, url: user_session_path do |f| %>
       <div class="field">
         <%= f.label "メールアドレス" %><br />
@@ -13,18 +14,9 @@
         <%= f.password_field :password, autocomplete: "current-password" %>
       </div>
 
-      <% if devise_mapping.rememberable? %>
-        <div class="field">
-          <%= f.check_box :remember_me %>
-          <%= f.label :remember_me %>
-        </div>
-      <% end %>
-
       <div class="actions">
         <%= f.submit "ログイン" %>
       </div>
     <% end %>
-
-    <%= render "public/shared/links" %>
   </div>
 </div>

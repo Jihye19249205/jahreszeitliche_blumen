@@ -10,7 +10,7 @@
   </head>
   <body "d-flex flex-column vh-100">
     <header class = "shadow-sm">
-      <nav class="navbar navbar-expand-lg navbar-dark bg-warning">
+      <nav class="navbar navbar-expand-lg">
         <div class = "container">
           <a class = "navbar-brand p-3" href = "/">
             <span><%= image_tag "logo_transparent", size: "120x100" %></span>
@@ -55,7 +55,7 @@
       <%= yield %>
     </main>
   </body>
-  <footer class = "bg-dark text-white pt-5 pb-4">
-    <p>Copy Light. Chie Hirayama</p>
+  <footer class = "text-dark pt-5 pb-4 ">
+    <p class = "text-center">Copy Light. Chie Hirayama</p>
   </footer>
 </html>
