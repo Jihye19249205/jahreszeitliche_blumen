@@ -38,6 +38,9 @@
           　</li>
           　<% else %>
           　<li class = "nav-link text-light">
+          　  <%= link_to "トップページ", top_path %>
+          　</li>
+          　<li class = "nav-link text-light">
           　  <%= link_to "About", about_path %>
           　</li>
           　<li class = "nav-link text-light">
@@ -52,10 +55,12 @@
       </nav>
     </header>
     <main>
-      <%= yield %>
+      <div class = "container">
+        <%= yield %>
+      </div>
     </main>
   </body>
-  <footer class = "text-dark pt-5 pb-4 ">
+  <footer class = "text-dark pt-5 pb-4 m-0">
     <p class = "text-center">Copy Light. Chie Hirayama</p>
   </footer>
 </html>

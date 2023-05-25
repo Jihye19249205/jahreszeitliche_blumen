@@ -1,58 +1,59 @@
-<div class = "container">
-  <div class = "row">
-    <h2>ユーザー登録</h2>
-    <%= form_with model: @user, url: user_registration_path do |f| %>
-    <table>
-      <%= render "public/shared/error_messages", resource: resource %>
+<div style = "background-color: #FFDBC9">
+  <div class = "container py-5">
+    <div class = "row col-md-5">
+      <h2>ユーザー登録</h2>
+    </div>
+    <div class = "row justify-content-center border bg-light">
+      <%= form_with model: @user, url: user_registration_path do |f| %>
+      <table>
+        <%= render "public/shared/error_messages", resource: resource %>
+        <tr>
+          <th>名前：</th>
+          <td><%= f.label "（姓）" %><%= f.text_field :last_name %></td>
+          <td><%= f.label "（名）" %><%= f.text_field :first_name %></td>
+        </tr>
 
-      <tr>
-        <th>名前：</th>
-        <td><%= f.label "（姓）" %>   <%= f.text_field :last_name %></td>
-        <td><%= f.label "（名）" %>   <%= f.text_field :first_name %></td>
-      </tr>
+        <tr>
+          <th>フリガナ：</th>
+          <td><%= f.label "（セイ）" %><%= f.text_field :last_name_kana %></td>
+          <td><%= f.label "（メイ）" %><%= f.text_field :first_name_kana %></td>
+        </tr>
 
-      <tr>
-        <th>フリガナ：</th>
-        <td><%= f.label "（セイ）" %><%= f.text_field :last_name_kana %></td>
-        <td><%= f.label "（メイ）" %><%= f.text_field :first_name_kana %></td>
-      </tr>
+        <tr>
+          <th><%= f.label "ニックネーム" %>：</th>
+          <td><%= f.text_field :nick_name %></td>
+        </tr>
+        <tr>
+          <th><%= f.label "メールアドレス" %>：</th>
+          <td><%= f.email_field :email, autofocus: true, autocomplete: "email" %></td>
+        </tr>
+        <tr>
+          <th><%= f.label "在住都道府県" %>：</th>
+          <td><%= f.collection_select :prefecture_id, Prefecture.all ,:id,:prefecture, { prompt: "選択してください"} %></td>
+        </tr>
+        <tr>
+          <th><%= f.label "電話番号(ハイフンなし)" %>：</th>
+          <td><%= f.telephone_field :phone_number %></td>
+        </tr>
+        <tr>
+          <th><%= f.label "パスワード（6文字以上）" %>：</th>
+          <td><%= f.password_field :password, autocomplete: "new-password" %></td>
+        </tr>
 
-      <tr>
-        <th><%= f.label "ニックネーム" %>：</th>
-        <td><%= f.text_field :nick_name %></td>
-      </tr>
+        <tr>
+          <th><%= f.label "パスワード（確認用）" %>：</th>
+          <td><%= f.password_field :password_confirmation, autocomplete: "new-password" %></td>
+        </tr>
 
-      <tr>
-        <th><%= f.label "メールアドレス" %>：</th>
-        <td><%= f.email_field :email, autofocus: true, autocomplete: "email" %></td>
-      </tr>
-
-      <tr>
-        <th><%= f.label "在住都道府県" %>：</th>
-        <td><%= f.collection_select :prefecture_id, Prefecture.all ,:id,:prefecture, { prompt: "選択してください"} %></td>
-      </tr>
-
-      <tr>
-        <th><%= f.label "電話番号(ハイフンなし)" %>：</th>
-        <td><%= f.telephone_field :phone_number %></td>
-      </tr>
-
-      <tr>
-        <th><%= f.label "パスワード（6文字以上）" %>：</th>
-        <td><%= f.password_field :password, autocomplete: "new-password" %></td>
-      </tr>
-
-      <tr>
-        <th><%= f.label "パスワード（確認用）" %>：</th>
-        <td><%= f.password_field :password_confirmation, autocomplete: "new-password" %></td>
-      </tr>
-
-      <tr>
-        <th></th>
-        <td><%= f.submit "新規登録", class: "btn btn-success" %></td>
-      </tr>
-    </table>
-    <% end %>
-    <%= render "public/shared/links" %>
+        <tr>
+          <th></th>
+          <td><%= f.submit "新規登録", class: "btn btn-success" %></td>
+        </tr>
+      </table>
+    </div>
+      <% end %>
+    <div class = "row">
+      <p><%= link_to "ログイン画面へ", new_user_session_path, class: "btn btn-primary" %></p>
+    </div>
   </div>
 </div>

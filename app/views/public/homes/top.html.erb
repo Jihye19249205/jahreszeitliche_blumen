@@ -1,12 +1,18 @@
 
-<%= flash[:notice] %>
+
 <div class = "container">
-  <h1>※ロゴ</h1>
-  <div>
+  <div class = "row justify-content-center py-3">
+    <div class = "row justify-content-center mb-3"><%= flash[:notice] %></div>
+    <div class = "row justify-content-center pt-3">
+      <%= image_tag asset_path('logo_transparent.png'), size: "400x300" %>
+    </div>
+  </div>
+  <div class = "row justify-content-center mt-3">
     <p>
       当コミュニティサイトへご訪問いただきありがとうございます。</br>
       ユーザ様たちによって撮影された、花や植物の写真に癒される、素敵な時間をお過ごしください。</br>
-      ゲストログインで投稿の閲覧は可能ですが、投稿機能やいいね、コメント機能を利用するにはユーザ登録が必要となります。
+      ゲストログインで投稿の閲覧は可能ですが、投稿機能や「行ってみたい！」、コメント機能を利用するにはユーザ登録が必要となります。
     </p>
   </div>
+  <div class = "row py-5"></div>
 </div>

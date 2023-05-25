@@ -23,7 +23,7 @@
       </tr>
       <tr>
         <td>在住：</td>
-        <td><%= f.collection_select :prefecture_id, Prefecture.all, :id, :prefecture %></td>
+        <td><%= f.collection_select :prefecture_id, Prefecture.where(id:1..8), :id, :prefecture %></td>
       </tr>
       <tr>
         <td>アカウントステータス：</td>

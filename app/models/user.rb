@@ -17,13 +17,13 @@ class User < ApplicationRecord
 
     def self.guest
       find_or_create_by!(
-      email: 'guest@example.com',
+      email: 'guest-user@example.com',
       prefecture_id: 2,
-      last_name: 'サンプル',
-      first_name: '太郎',
-      last_name_kana: 'サンプル',
-      first_name_kana: 'タロウ',
-      nick_name: 'sTaro',
+      last_name: 'ゲスト',
+      first_name: 'ユーザ',
+      last_name_kana: 'ゲスト',
+      first_name_kana: 'ユーザ',
+      nick_name: 'Guest',
       phone_number: '03-1111-1111',
       is_deleted: false
       ) do |user|

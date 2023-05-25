@@ -1,5 +1,14 @@
+
+
+body {
+  margin:0px;
+  font-family: courier;
+  color: #66CC99;
+}
+
 header {
-  background-color: #FFDBC9;
+  background-color: #CBFFD3;
+  font-family: serif;
 }
 
 nav {
@@ -8,10 +17,16 @@ nav {
 
 main {
   display: flex;
-  background-color: #FFDBC9;
   justify-content: center;
+  background-color: #FFDBC9;
+  font-family: serif;
+  height: 100%;
 }
 
 footer {
-  background-color: #AEFFBD;
+  background-color: #FFDBC9;
+  font-family: courier;
+  color: #330000;
+  width:100%;
+  bottom: 0;
 }

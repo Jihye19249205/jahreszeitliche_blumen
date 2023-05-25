@@ -1,12 +1,13 @@
 <div class = "container">
-  <div class = "row">
+  <div class = "row d-flex">
+    <h2>投稿内容編集</h2>
+  </div>
+  <div class = "row d-flex">
     <div class = "col-md-5">
-      <h2>投稿内容編集</h2>
-      <p>選択した写真：</p>
+      <p>投稿した写真：</p>
       <p><%= image_tag @picture.image, size: "350x250" %></p>
     </div>
     <div class = "col-md-5">
-      <div class = "col-md-5">
       <%= form_with model: @picture, url: picture_path do |f| %>
       <table class = "table">
         <tr>
@@ -19,10 +20,14 @@
         </tr>
         <tr>
           <td><%= f.label "都道府県(必須):" %></td>
-          <td><%= f.collection_select :prefecture_id, Prefecture.all, :id, :prefecture, :prompt => "--選択してください--" %></td>
+          <td><%= f.collection_select :prefecture_id, Prefecture.where(id:1..8), :id, :prefecture, :prompt => "--選択してください--" %></td>
         </tr>
         <tr>
-          <td><%= f.label "花。植物の種類(必須):" %></td>
+          <td><%= f.label "最寄駅" %></td>
+          <td><%= f.text_field :station %></td>
+        </tr>
+        <tr>
+          <td><%= f.label "花・植物の種類(必須):" %></td>
           <td><%= f.text_field :flower_plant %></td>
         </tr>
         <tr>
@@ -35,7 +40,6 @@
         </tr>
       </table>
       <% end %>
-    </div>
     </div>
   </div>
 </div>

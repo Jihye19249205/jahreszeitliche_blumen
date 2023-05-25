@@ -1,5 +1,5 @@
 <div class = "container">
-  <div class = "row">
+  <div class = "row d-flex">
     <%= form_with model: @picture, url: search_pictures_path, local: true, method: :get do |f| %>
     <table>
       <tr>
@@ -27,7 +27,7 @@
   <div class = "card-body">
     <div class = "row">
       <% @pictures.each do |picture| %>
-      <div class = "card w-50 mx-auto mt-4 shadow-lg">
+      <div class = "col-lg-4 d-flex card w-50 mx-auto mt-4 shadow-lg">
         <p class = >
         <%= link_to picture_path(picture) do %>
           <%= image_tag picture.image, class:"card-img-top"; %>
@@ -43,5 +43,6 @@
       <% end %>
     </div>
   </div>
+  <!--※ページネーション-->
 </div>
 
