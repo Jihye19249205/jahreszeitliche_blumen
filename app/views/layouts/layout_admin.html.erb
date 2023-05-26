@@ -27,9 +27,6 @@
           　  <%= link_to "ユーザ一覧", admin_users_path %>
           　</li>
           　<li class = "nav-link text-light">
-          　  <%= link_to "カテゴリ一覧", admin_categories_path %>
-          　</li>
-          　<li class = "nav-link text-light">
           　  <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
           　</li>
           　<% else %>
@@ -45,7 +42,7 @@
       </div>
     </main>
   </body>
-  <footer class = "d-flex text-dark py-5 my-0">
+  <footer class = "footer text-dark py-5 my-0">
     <div class = "container">
       <p class = "text-center">Copy Light. Chie Hirayama</p>
     </div>

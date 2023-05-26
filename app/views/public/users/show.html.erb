@@ -2,15 +2,13 @@
 <%= flash[:notice] %>
   <div class = "container">
     <div class = "row">
-      <div class = "col-md-5">
+      <div class = "col-lg-5">
         <h2>マイページ</h2>
-        <div>
-          <% if @user.profile_image.attached? %>
-            <%= image_tag @user.profile_image, size: "200x150" %>
-          <% else %>
-            <%= image_tag 'no_image', size: "200x150" %>
-          <% end %>
-        </div>
+        <% if @user.profile_image.attached? %>
+          <%= image_tag @user.profile_image, size: "200x150" %>
+        <% else %>
+          <%= image_tag 'no_image', size: "200x150" %>
+        <% end %>
         <table>
           <tr><td>ユーザ名：</td><td><%= @user.nick_name %></td></tr>
           <tr><td>在住：</td><td><%= @user.prefecture.prefecture %></td></tr>
@@ -19,33 +17,12 @@
           <tr><td><%= link_to "行ってみたい！をした投稿一覧", wanna_goes_user_path(current_user) %></td></tr>
         </table>
       </div>
-      <div class = "col-md-5">
-        <% @pictures.each do |picture| %>
-          <p>
-            <%= link_to picture_path(picture) do %>
-              <%= image_tag picture.get_image, size: "350x250" %>
-            <% end %>
-          </p>
-          <p><%= picture.created_at.strftime('%Y/%m/%d %H:%M') %></p>
-          <!--↓行ってみたい件数表示↓-->
-          <p>
-            <% if picture.wanna_gone_by?(current_user) %>
-            <p>
-              <%= link_to picture_wanna_goes_path(picture), method: :delete do %>
-                行ってみたい！<%= picture.wanna_goes.count %> 件
-              <% end %>
-            </p>
-            <% else %>
-            <p>
-              <%= link_to picture_wanna_goes_path(picture), method: :post do %>
-                行ってみたい！<%= picture.wanna_goes.count %> 件
-              <% end %>
-            </p>
-            <% end %>
-            <!--↓コメント件数表示↓-->
-            <p>コメント：<%= picture.picture_comments.count %> 件</p>
-          </p>
-        <% end %>
+      <div class = "card-body">
+        <div class = "row d-flex flex-row py-5">
+          <div class = "col-lg-8 card">
+            <%= render 'templates/user_show_pictures', users: @user %>
+          </div>
+        </div>
       </div>
     </div>
   </div>

@@ -1,47 +1,53 @@
 <div class = "container">
-  <%= form_with model: @picture, url: pictures_path do |f| %>
+  <% if current_user.email == 'guest-user@example.com' %>
   <div class = "row">
-    <div class = "col-md-5">
-      <h2>新規投稿</h2>
-      <%= flash[:notice] %>
-      <p>写真選択：</p>
-      <p><%= f.file_field :image, accept: "image/*" %></p>
-    </div>
+    <p>ゲストユーザは投稿できません。</p>
   </div>
-    <div class = "col-md-5">
+  <% else %>
+    <%= form_with model: @picture, url: pictures_path do |f| %>
+    <div class = "row">
       <div class = "col-md-5">
-      <table class = "table">
-        <tr>
-          <td><%= f.label "撮影スポット(必須):" %></td>
-          <td><%= f.text_field :spot_name %></td>
-        </tr>
-        <tr>
-          <td><%= f.label "撮影時期(必須):" %></td>
-          <td><%= f.collection_select :season_id, Season.all, :id, :season %></td>
-        </tr>
-        <tr>
-          <td><%= f.label "都道府県(必須):" %></td>
-          <td><%= f.collection_select :prefecture_id, Prefecture.where(id:1..8), :id, :prefecture %></td>
-        </tr>
-        <tr>
-          <td><%= f.label "最寄駅" %></td>
-          <td><%= f.text_field :station %></td>
-        </tr>
-        <tr>
-          <td><%= f.label "花・植物の種類(必須):" %></td>
-          <td><%= f.text_field :flower_plant %></td>
-        </tr>
-        <tr>
-          <td><%= f.label "キャプション:" %></td>
-          <td><%= f.text_area :caption %></td>
-        </tr>
-        <tr>
-          <td><%= f.submit "投稿を保存", class: "btn btn-primary" %></td>
-          <td></td>
-        </tr>
-      </table>
+        <h2>新規投稿</h2>
+        <p><%= flash[:notice] %></p>
+        <p>写真選択：</p>
+        <p><%= f.file_field :image, accept: "image/*" %></p>
+      </div>
     </div>
+      <div class = "col-md-5">
+        <div class = "col-md-5">
+        <table class = "table">
+          <tr>
+            <td><%= f.label "撮影スポット(必須):" %></td>
+            <td><%= f.text_field :spot_name %></td>
+          </tr>
+          <tr>
+            <td><%= f.label "撮影時期(必須):" %></td>
+            <td><%= f.collection_select :season_id, Season.all, :id, :season %></td>
+          </tr>
+          <tr>
+            <td><%= f.label "都道府県(必須):" %></td>
+            <td><%= f.collection_select :prefecture_id, Prefecture.where(id:1..8), :id, :prefecture %></td>
+          </tr>
+          <tr>
+            <td><%= f.label "最寄駅" %></td>
+            <td><%= f.text_field :station %></td>
+          </tr>
+          <tr>
+            <td><%= f.label "花・植物の種類(必須):" %></td>
+            <td><%= f.text_field :flower_plant %></td>
+          </tr>
+          <tr>
+            <td><%= f.label "キャプション:" %></td>
+            <td><%= f.text_area :caption %></td>
+          </tr>
+          <tr>
+            <td><%= f.submit "投稿を保存", class: "btn btn-primary" %></td>
+            <td></td>
+          </tr>
+        </table>
+      </div>
+      </div>
     </div>
-  </div>
+    <% end %>
   <% end %>
 </div>

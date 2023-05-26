@@ -7,10 +7,12 @@ class Admin::SessionsController < Devise::SessionsController
   before_action :authenticate_admin!
 
   def after_sign_in_path_for(resource)
+    flash[:notice] = "正常にログインしました"
     admin_root_path
   end
 
   def after_sign_out_path_for(resource)
+    flash[:notice] = "正常にログアウトしました"
     new_admin_session_path
   end
 

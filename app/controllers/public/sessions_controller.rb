@@ -14,10 +14,12 @@ class Public::SessionsController < Devise::SessionsController
   end
 
   def after_sign_in_path_for(resource)
+    flash[:notice] = "正常にログインしました"
     user_path(current_user)
   end
 
   def after_sign_out_path_for(resource)
+    flash[:notice] = "正常にログアウトしました。またのご利用をお待ちしております。"
     root_path
   end
 

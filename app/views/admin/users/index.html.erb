@@ -15,7 +15,7 @@
         <% @users.each do |user| %>
         <tr>
           <td>
-            <%= link_to admin_user_path(@user.id) do %>
+            <%= link_to admin_user_path(user) do %>
               <%= user.last_name + user.first_name %>
             <% end %>
           </td>
@@ -28,6 +28,5 @@
       </tbody>
     </table>
   </div>
+  <div class = "row"><%= paginate @users %></div>
 </div>
-
-<%= paginate @users %>

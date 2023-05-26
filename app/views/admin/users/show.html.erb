@@ -1,55 +1,33 @@
-<%= flash[:notice] %>
-
 <div class = "container">
   <div class = "row">
-    <h2><%= @user.last_name + @user.first_name %>（<%= @user.last_name_kana + @user.first_name_kana %>）さんの詳細情報</h2>
-    <div>
+    <div class = "col-lg-6">
+      <h4><%= @user.last_name + @user.first_name %>（<%= @user.last_name_kana + @user.first_name_kana %>）さんの詳細情報</h4>
+      <p><%= flash[:notice] %></p>
+    <div class = "row">
       <h4>プロフィール画像：</h4>
-      <p>
-        <% if @user.profile_image.attached? %>
-          <%= image_tag @user.profile_image, size: "200x150" %>
-        <% else %>
-          <%= image_tag 'no_image', size: "200x150" %>
-        <% end %>
-        </p>
-      <table class = "table">
-        <tr><td>ニックネーム：</td><td><%= @user.nick_name %></td></tr>
-        <tr><td>メールアドレス：</td><td><%= @user.email %></td></tr>
-        <tr><td>在住：</td><td><%= @user.prefecture.prefecture %></td></tr>
-        <tr><td>アカウントステータス：</td><td><%= @user.is_deleted %></td></tr>
-        <tr><td><%= link_to "情報編集", edit_admin_user_path, class: "btn btn-success" %></td></tr>
-      </table>
     </div>
-    <div>
-      <h2><%= @user.last_name + @user.first_name %>さんの投稿一覧</h2>
-      <% @pictures.each do |picture| %>
-      <table>
-        <tr>
-          <td>
-            <%= link_to admin_picture_path(picture) do %>
-              <%= image_tag picture.image, size: "200x150" %>
-            <% end %>
-          </td>
-        </tr>
-        <tr><td>投稿日時：</td><td><%= picture.created_at.strftime('%Y/%m/%d %H:%M') %></td></tr>
-        <tr><td>行ってみたい！：</td><td><%= picture.wanna_goes.count %>件</td></tr>
-        <tr><td>コメント：<%= picture.picture_comments.count %>件</td></tr>
-        <% @picture_comments.each do |picture_comment| %>
-        <table>
-          <tr>
-            <td><%= picture_comment.user.nick_name %></td>
-            <td><%= picture_comment.created_at.strftime('%Y/%m/%d %H:%M') %></td>
-          </tr>
-          <tr>
-            <td><%= picture_comment.comment %></td>
-          </tr>
+    <div class = "row">
+      <div class = "col-lg-8">
+        <p>
+          <% if @user.profile_image.attached? %>
+            <%= image_tag @user.profile_image, size: "200x150" %>
+          <% else %>
+            <%= image_tag 'no_image', size: "200x150" %>
+          <% end %>
+        </p>
+        <table class = "table">
+          <tr><td>ニックネーム：</td><td><%= @user.nick_name %></td></tr>
+          <tr><td>メールアドレス：</td><td><%= @user.email %></td></tr>
+          <tr><td>在住：</td><td><%= @user.prefecture.prefecture %></td></tr>
+          <tr><td>アカウントステータス：</td><td><%= @user.is_deleted %></td></tr>
+          <tr><td><%= link_to "情報編集", edit_admin_user_path, class: "btn btn-success" %></td></tr>
         </table>
-        <% end %>
-        <tr>
-          <td></td>
-        </tr>
-      </table>
-      <% end %>
+      </div>
+    </div>
+    <div class "col-lg-8 d-flex text-right">
+      <h4><%= @user.last_name + @user.first_name %>さんの投稿一覧</h4>
+      <%= render 'templates/user_show_pictures', users: @user %>
+      </div>
     </div>
   </div>
 </div>

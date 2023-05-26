@@ -8,7 +8,7 @@ class Admin::UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @pictures = @user.pictures.all
+    @pictures = @user.pictures
   end
 
   def edit

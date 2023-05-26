@@ -16,7 +16,7 @@ class Public::PicturesController < ApplicationController
   end
 
   def index
-    @pictures = Picture.all
+    @pictures = Picture.page(params[:page])
   end
 
   def new
@@ -26,13 +26,13 @@ class Public::PicturesController < ApplicationController
   def create
     @picture = Picture.new(picture_params)
     @picture.user_id = current_user.id
-      if @picture.save
-        flash[:notice] = "投稿が成功しました！"
-        redirect_to picture_path(@picture.id)
-      else
-        flash[:notice] = "投稿に失敗しました。お手数ですが、入力内容を再度お確かめください。"
-        render :new
-      end
+    if @picture.save
+      flash[:notice] = "投稿が成功しました！"
+      redirect_to picture_path(@picture.id)
+    else
+      flash[:notice] = "投稿に失敗しました。お手数ですが、入力内容を再度お確かめください。"
+      render :new
+    end
   end
 
   def show
@@ -78,7 +78,8 @@ class Public::PicturesController < ApplicationController
       :caption,
       :station,
       :flower_plant,
-      :image
+      :image,
+      :user_id
       )
   end
 

@@ -8,23 +8,31 @@
       <h2>投稿詳細</h2>
       <p><%= image_tag @picture.image, size: "350x250" %></p>
       <p>投稿日時：<%= @picture.created_at.strftime('%Y/%m/%d %H:%M') %></p>
-      <% if @picture.wanna_gone_by?(current_user) %>
-      <p>
-        <%= link_to picture_wanna_goes_path(@picture), method: :delete do %>
-          <%= @picture.wanna_goes.count %> 行ってみたい！
-        <% end %>
-      </p>
+      <% if current_user.email == 'guest-user@example.com' %>
+        <p><%= @picture.wanna_goes.count %> 行ってみたい！</p>
       <% else %>
-      <p>
-        <%= link_to picture_wanna_goes_path(@picture), method: :post do %>
-          行ってみたい！<%= @picture.wanna_goes.count %> 件
+        <% if @picture.wanna_gone_by?(current_user) %>
+        <p>
+          <%= link_to picture_wanna_goes_path(@picture), method: :delete do %>
+            <%= @picture.wanna_goes.count %> 行ってみたい！
+          <% end %>
+        </p>
+        <% else %>
+        <p>
+          <%= link_to picture_wanna_goes_path(@picture), method: :post do %>
+            行ってみたい！<%= @picture.wanna_goes.count %> 件
+          <% end %> 
+        </p>
         <% end %>
-      </p>
       <% end %>
       <p>コメント：<%= @picture.picture_comments.count %>件</p>
-      <%= form_with model: [@picture, @picture_comment] do |f| %>
-      <p><%= f.text_area :comment, rows: '5', placeholder: "コメントをここに", class: "col-12" %></p>
-      <p><%= f.submit "コメントを送信", class: "btn btn-primary" %></p>
+      <% if current_user.email == 'guest-user@example.com' %>
+        <p>ゲストユーザはコメントの書き込みはできません。</p>
+      <% else %>
+        <%= form_with model: [@picture, @picture_comment] do |f| %>
+        <p><%= f.text_area :comment, rows: '5', placeholder: "コメントをここに", class: "col-12" %></p>
+        <p><%= f.submit "コメントを送信", class: "btn btn-primary" %></p>
+        <% end %>
       <% end %>
     </div>
     <div class = "col-md-5">

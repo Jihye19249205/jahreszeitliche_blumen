@@ -1,31 +1,28 @@
 <div class = "container">
   <h1>本日の投稿（<%= @pictures.count %>件)</h1>
-    <div class = "row">
-      <% @pictures.each do |picture| %>
-      <table class = "table">
-        <tr>
-          <td>
+    <div class = "row py-5">
+      <p><%= flash[:notice] %></p>
+    </div>
+    <div class = "card-body">
+      <div class = "row flex-row">
+        <% @pictures.each do |picture| %>
+        <div class = "d-flex col-lg-5 card w-50 mx-auto mt-4 shadow-lg">
+          <p>
             <%= link_to admin_picture_path(picture) do %>
-              <%= image_tag picture.image, size: "350x250" %>
+              <%= image_tag picture.image, size: "350x250", class: "card-img-top"; %>
             <% end %>
-          </td>
-        </tr>
-        <tr>
-          <td>
+          </p>
+          <p>
             撮影者：<%= picture.user.nick_name %>さん
-          </td>
-        </tr>
-        <tr>
-          <td>
+          </p>
+          <p>
             行ってみたい!：<%= picture.wanna_goes.count %>件
-          </td>
-        </tr>
-        <tr>
-          <td>
+          </p>
+          <p>
             コメント：<%= picture.picture_comments.count %>件
-          </td>
-        </tr>
-      </table>
+          </p>
+        </div>
+      </div>
       <% end %>
     </div>
 </div>
