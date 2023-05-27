@@ -1,6 +1,6 @@
 
 <div class = "container">
-  <div class = "row d-fle">
+  <div class = "row d-flex">
     <%= flash[:notice] %>
   </div>
   <div class = "row d-flex">
@@ -21,7 +21,7 @@
         <p>
           <%= link_to picture_wanna_goes_path(@picture), method: :post do %>
             行ってみたい！<%= @picture.wanna_goes.count %> 件
-          <% end %> 
+          <% end %>
         </p>
         <% end %>
       <% end %>
@@ -77,7 +77,7 @@
           <td><%= picture_comment.user.nick_name %></td>
           <td><%= picture_comment.comment %></td>
           <% if picture_comment.user == current_user %>
-          <td><%= link_to "コメントを削除", picture_picture_comment_path(picture_comment.picture, picture_comment), class: "btn btn-secondary", method: :delete %></td>
+          <td><%= link_to "コメント削除", picture_picture_comment_path(picture_comment.picture, picture_comment), class: "btn btn-secondary", method: :delete %></td>
           <% end %>
         </tr>
         <% end %>

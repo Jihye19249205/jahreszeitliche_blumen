@@ -18,6 +18,9 @@ class Public::UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @pictures = @user.pictures.all
+    unless @user.id == current_user.id
+      redirect_to user_path(current_user)
+    end
   end
 
   def edit

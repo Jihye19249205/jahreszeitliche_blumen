@@ -4,7 +4,9 @@
   </div>
   <div class = "row py-5">
     <p>※削除後に再度当サイトの機能を利用するには、再登録が必要になります。</p></br>
-    <p><%= link_to "削除しない", user_path(current_user) %></p>
+  </div>
+  <div class = "row">
+    <p><%= link_to "削除しない", user_path(current_user), class: "btn btn-primary" %></p>
     <p><%= link_to "削除する", withdraw_users_path, method: :patch, class: "btn btn-danger", data: { confirm: '本当に削除しますか？' } %></p>
   </div>
   <div class = "row py-5"></div>

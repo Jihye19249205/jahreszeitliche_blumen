@@ -2,27 +2,41 @@
 <%= flash[:notice] %>
   <div class = "container">
     <div class = "row">
-      <div class = "col-lg-5">
+      <div class = "col-lg-4">
         <h2>マイページ</h2>
         <% if @user.profile_image.attached? %>
-          <%= image_tag @user.profile_image, size: "200x150" %>
+          <%= image_tag @user.profile_image, size: "350x250" %>
         <% else %>
-          <%= image_tag 'no_image', size: "200x150" %>
+          <%= image_tag 'no_image', size: "350x250" %>
         <% end %>
-        <table>
+        <table class = "table">
           <tr><td>ユーザ名：</td><td><%= @user.nick_name %></td></tr>
           <tr><td>在住：</td><td><%= @user.prefecture.prefecture %></td></tr>
           <tr><td><%= @user.introduction %></td></tr>
-          <tr><td><%= link_to "ユーザ情報編集", edit_user_path(@user) %></td></tr>
-          <tr><td><%= link_to "行ってみたい！をした投稿一覧", wanna_goes_user_path(current_user) %></td></tr>
+          <tr><td><%= link_to "ユーザ情報編集", edit_user_path(@user), class: "btn btn-success" %></td></tr>
+          <tr><td><%= link_to "行ってみたい！投稿一覧", wanna_goes_user_path(current_user), class: "btn btn-info" %></td></tr>
         </table>
       </div>
-      <div class = "card-body">
-        <div class = "row d-flex flex-row py-5">
-          <div class = "col-lg-8 card">
-            <%= render 'templates/user_show_pictures', users: @user %>
+    </div>
+    <div class = "row">
+      <h4>投稿一覧</h4>
+    </div>
+    <div class = "row">
+    <% @pictures.each do |picture| %>
+      <div class = "d-flex col-lg-4">
+        <div class = "card-body pt-4">
+          <div class = "d-flex card w-100 mx-auto mt-5 shadow-lg">
+            <p>
+              <%= link_to picture_path(picture) do %>
+                <%= image_tag picture.image, size: "350x250", class: "card-img-top"; %>
+              <% end %>
+            </p>
+            <p>投稿日時：<%= picture.created_at.strftime('%Y/%m/%d %H:%M') %></p>
+            <p>行ってみたい！：<%= picture.wanna_goes.count %>件</p>
+            <p>コメント：<%= picture.picture_comments.count %>件</p>
           </div>
         </div>
       </div>
+    <% end %>
     </div>
   </div>
