@@ -433,3 +433,7 @@ Picture.create!([
     image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/production/test_picture_images/picture2_user9.JPG"), filename: "picture2_user9.JPG")
   }
   ])
+
+  Admin.create!(
+    email: 'admin@example.com',
+    password: 'admin11')
