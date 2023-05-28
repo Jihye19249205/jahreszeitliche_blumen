@@ -7,7 +7,7 @@
         <% if @user.profile_image.attached? %>
           <%= image_tag @user.profile_image, size: "350x250" %>
         <% else %>
-          <%= image_tag 'no_image', size: "350x250" %>
+          <%= image_tag 'no_image.png', size: "350x250" %>
         <% end %>
         <table class = "table">
           <tr><td>ユーザ名：</td><td><%= @user.nick_name %></td></tr>
