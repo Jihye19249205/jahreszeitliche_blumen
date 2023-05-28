@@ -29,7 +29,7 @@
         </tr>
         <tr>
           <th><%= f.label "在住都道府県" %>：</th>
-          <td><%= f.collection_select :prefecture_id, Prefecture.all ,:id,:prefecture, { prompt: "選択してください"} %></td>
+          <td><%= f.collection_select :prefecture_id, Prefecture.all, :id,:prefecture, { prompt: "選択してください"} %></td>
         </tr>
         <tr>
           <th><%= f.label "電話番号(ハイフンなし)" %>：</th>
