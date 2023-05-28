@@ -12,7 +12,7 @@ class User < ApplicationRecord
     has_one_attached :profile_image
 
     # validates :prefecture_id, :last_name, :first_name, :last_name_kana, :first_name_kana, :phone_number, presense: true
-    validates :nick_name, length: { minimum: 2, maximum: 10 }
+    validates :nick_name, length: { minimum: 2, maximum: 20 }
     validates :introduction, length: { maximum: 50 }
 
     def self.guest
