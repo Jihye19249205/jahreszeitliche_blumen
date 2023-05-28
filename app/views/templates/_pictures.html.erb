@@ -5,7 +5,7 @@
       <div class = "d-flex card w-100 mx-auto shadow-lg">
         <p>
         <%= link_to picture_path(picture) do %>
-          <%= image_tag picture.image, size: "350x250", class: "card-img-top"; %>
+          <%= image_tag picture.image, size: "310x250", class: "card-img-top"; %>
         <% end %>
         </p>
         <p>撮影者：<%= picture.user.nick_name %>さん</p>
