@@ -25,7 +25,11 @@
             　  <%= link_to "新規投稿", new_picture_path, class: "nav-link text-black-50" %>
             　</li>
             　<li class = "nav-item">
-            　  <%= link_to "マイページ", user_path(current_user), class: "nav-link text-black-50" %>
+            　  <% if @user.email == 'guest-user@example.com'%>
+            　    <% link_to "マイページ", top_path, class: "nav-link text-black-50" %>
+            　 <% else %>
+            　    <%= link_to "マイページ", user_path(current_user), class: "nav-link text-black-50" %>
+            　 <% end %>
             　</li>
             　<li class = "nav-item">
             　  <%= link_to "投稿一覧", pictures_path, class: "nav-link text-black-50" %>
