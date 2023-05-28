@@ -16,38 +16,38 @@
             <span><%= image_tag ('logo_transparent'), size: "120x100" %></span>
           </a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-      　 　　 <span class="navbar-toggler-icon"></span>
+      　 　　 <span class="navbar-toggler-icon bg-text-black-50"></span>
         　</button>
         　<div class="collapse navbar-collapse" id="navbarNavDropdown">
           　<ul class = "navbar-nav ml-auto">
             　<% if user_signed_in? %>
             　<li class = "nav-item">
-            　  <%= link_to "新規投稿", new_picture_path, class: "nav-link text-light" %>
+            　  <%= link_to "新規投稿", new_picture_path, class: "nav-link text-black-50" %>
             　</li>
             　<li class = "nav-item">
-            　  <%= link_to "マイページ", user_path(current_user, class: "nav-link text-light" %>
+            　  <%= link_to "マイページ", user_path(current_user), class: "nav-link text-black-50" %>
             　</li>
             　<li class = "nav-item">
-            　  <%= link_to "投稿一覧", pictures_pathr, class: "nav-link text-light" %>
+            　  <%= link_to "投稿一覧", pictures_path, class: "nav-link text-black-50" %>
             　</li>
             　<li class = "nav-item">
-            　  <%= link_to "「行ってみたい！」一覧", wanna_goes_user_path(current_user)r, class: "nav-link text-light" %>
+            　  <%= link_to "「行ってみたい！」一覧", wanna_goes_user_path(current_user), class: "nav-link text-black-50" %>
             　</li>
             　<li class = "nav-item">
-            　  <%= link_to "ログアウト", destroy_user_session_path, method: :deleter, class: "nav-link text-light" %>
+            　  <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "nav-link text-black-50" %>
             　</li>
             　<% else %>
             　<li class = "nav-item">
-            　  <%= link_to "トップページ", top_pathr, class: "nav-link text-light" %>
+            　  <%= link_to "トップページ", top_path, class: "nav-link text-black-50" %>
             　</li>
             　<li class = "nav-item">
-            　  <%= link_to "About", about_pathr, class: "nav-link text-light" %>
+            　  <%= link_to "About", about_path, class: "nav-link text-black-50" %>
             　</li>
             　<li class = "nav-item">
-            　  <%= link_to "投稿一覧", pictures_pathr, class: "nav-link text-light" %>
+            　  <%= link_to "投稿一覧", pictures_path, class: "nav-link text-black-50" %>
             　</li>
             　<li class = "nav-item">
-            　  <%= link_to "ユーザ登録", new_user_registration_pathr, class: "nav-link text-light" %>
+            　  <%= link_to "ユーザ登録", new_user_registration_path, class: "nav-link text-black-50" %>
             　</li>
             　<% end %>
           　</ul>

@@ -16,19 +16,19 @@
             <span><%= image_tag ('logo_transparent'), size: "120x100" %></span>
           </a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-        　　<span class="navbar-toggler-icon"></span>
+        　　<span class="navbar-toggler-icon bg-text-black-50"></span>
         　</button>
         　<div class="collapse navbar-collapse" id="navbarNavDropdown">
           　<ul class = "navbar-nav ml-auto">
             　<% if admin_signed_in? %>
             　<li class = "nav-item" >
-            　  <%= link_to "投稿一覧", admin_pictures_pathh, class: "nav-link text-light" %>
+            　  <%= link_to "投稿一覧", admin_pictures_path, class: "nav-link text-black-50" %>
             　</li>
             　<li class = "nav-item">
-            　  <%= link_to "ユーザ一覧", admin_users_pathh, class: "nav-link text-light" %>
+            　  <%= link_to "ユーザ一覧", admin_users_path, class: "nav-link text-black-50" %>
             　</li>
             　<li class = "nav-item">
-            　  <%= link_to "ログアウト", destroy_admin_session_path, method: :deleteh, class: "nav-link text-light" %>
+            　  <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "nav-link text-black-50" %>
             　</li>
             　<% else %>
             　<div></div>
