@@ -28,7 +28,7 @@
           <div class = "d-flex card w-100 mx-auto mt-5 shadow-lg">
             <p>
               <%= link_to picture_path(picture) do %>
-                <%= image_tag picture.image, size: "350x250", class: "card-img-top"; %>
+                <%= image_tag picture.image, size: "330x250", class: "card-img-top"; %>
               <% end %>
             </p>
             <p>投稿日時：<%= picture.created_at.strftime('%Y/%m/%d %H:%M') %></p>
