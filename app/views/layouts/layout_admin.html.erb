@@ -21,14 +21,14 @@
         　<div class="collapse navbar-collapse" id="navbarNavDropdown">
           　<ul class = "navbar-nav ml-auto">
             　<% if admin_signed_in? %>
-            　<li class = "nav-link text-light" >
-            　  <%= link_to "投稿一覧", admin_pictures_path %>
+            　<li class = "nav-item" >
+            　  <%= link_to "投稿一覧", admin_pictures_pathh, class: "nav-link text-light" %>
             　</li>
-            　<li class = "nav-link text-light">
-            　  <%= link_to "ユーザ一覧", admin_users_path %>
+            　<li class = "nav-item">
+            　  <%= link_to "ユーザ一覧", admin_users_pathh, class: "nav-link text-light" %>
             　</li>
-            　<li class = "nav-link text-light">
-            　  <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
+            　<li class = "nav-item">
+            　  <%= link_to "ログアウト", destroy_admin_session_path, method: :deleteh, class: "nav-link text-light" %>
             　</li>
             　<% else %>
             　<div></div>
