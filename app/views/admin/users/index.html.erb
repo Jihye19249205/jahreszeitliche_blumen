@@ -21,7 +21,11 @@
           </td>
           <td><%= user.nick_name %></td>
           <td><%= user.prefecture.prefecture %></td>
-          <td><%= user.is_deleted %></td>
+          <% if user.is_deleted == true %>
+          <td class = "text-secondary">無効</td>
+          <% else %>
+          <td class = "text-success">有効</td>
+          <% end %>
           <td><%= link_to "編集", edit_admin_user_path(user), class: "btn btn-success" %></td>
         </tr>
         <% end %>
