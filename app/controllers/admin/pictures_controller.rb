@@ -17,7 +17,7 @@ class Admin::PicturesController < ApplicationController
   end
 
   def index
-    @pictures = Picture.page(params[:page])
+    @pictures = Picture.all
   end
 
   def show

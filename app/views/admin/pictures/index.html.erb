@@ -1,6 +1,6 @@
 <div class = "container">
   <div class = "row d-flex">
-    <%= form_with model: @picture, url: search_pictures_path, local: true, method: :get do |f| %>
+    <%= form_with model: @picture, url: search_admin_pictures_path, local: true, method: :get do |f| %>
   <table>
     <tr>
       <th>キーワード検索</th>
@@ -25,5 +25,4 @@
       <%= render 'templates/pictures', pictures: @pictures %>
     </div>
   </div>
-  <div class = "row"><%= paginate @pictures %></div>
 </div>

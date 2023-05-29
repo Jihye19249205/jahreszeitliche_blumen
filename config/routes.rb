@@ -10,8 +10,10 @@ Rails.application.routes.draw do
     root to: "homes#top"
     resources :pictures, only: [:index, :show, :edit, :update, :destroy] do
       resources :picture_comments, only: [:edit, :update, :destroy]
-      member do
+      collection do
         get 'search'
+      end
+      member do
         get 'picture_comments', as: 'comments'
       end
     end
