@@ -1,11 +1,14 @@
 <div class = "container">
   <% if current_user.email == 'guest-user@example.com' %>
-  <div class = "row">
+  <div class = "row py-5">
     <p>ゲストユーザは投稿できません。</p>
   </div>
+  <div class = "row py-5"></div>
+  <div class = "row py-5"></div>
+  <div class = "row py-5"></div>
   <% else %>
     <%= form_with model: @picture, url: pictures_path do |f| %>
-    <div class = "row">
+    <div class = "row py-5">
       <div class = "col-md-5">
         <h2>新規投稿</h2>
         <p><%= flash[:notice] %></p>
