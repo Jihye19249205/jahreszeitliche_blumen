@@ -34,7 +34,23 @@
 - 季節ごとに見頃を迎える花や植物について知りたい時
 
 ### 設計書
--
+## アプリケーション詳細設計
+- https://docs.google.com/spreadsheets/d/1fwpUtXT_ScuSEZWq_7Petz3Dy9pOYwcCj_7izTRY_Ms/edit#gid=549108681
+
+## UI Flows
+- Admin: https://app.diagrams.net/#G14_XwDyG-MweC1NXsFUF-gPzcS8m5_NVO
+
+- User: https://app.diagrams.net/#G1nKegHcuWE34zrY8WkNDBW-71qXKLHCpL
+
+## テーブル定義書
+- https://docs.google.com/spreadsheets/d/12MNBMi62SAykMBt11bgx8tCD4LZmxBmvh3dC6rduN2Y/edit#gid=1739957604
+
+## ER図
+- https://app.diagrams.net/#G1207UpTTi3at5jCO9mfFZTjQGH7u_tZPt
+
+## 管理者画面ログイン情報
+- email: admin.@example.com
+- password: admin11
 
 ## 開発環境
 - OS：Linux(CentOS)
@@ -43,3 +59,5 @@
 - JSライブラリ：jQuery
 - IDE：Cloud9
 
+## 使用素材
+- ロゴ作成：by shopify.com
