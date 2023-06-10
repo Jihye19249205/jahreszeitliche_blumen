@@ -64,11 +64,10 @@ class Public::PicturesController < ApplicationController
     @picture = Picture.find(params[:id])
     @picture.destroy
     flash[:notice] = "投稿を削除しました"
-    redirect_to user_path
+    redirect_to user_path(current_user)
   end
 
   private
-
 
   def picture_params
     params.require(:picture).permit(
