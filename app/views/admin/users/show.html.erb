@@ -1,7 +1,7 @@
 <div class = "container">
   <div class = "row py-5">
     <div class = "d-flex col-lg-8">
-      <h4><%= @user.last_name + @user.first_name %>（<%= @user.last_name_kana + @user.first_name_kana %>）さんの詳細情報</h4>
+      <h4><%= @user.nick_name %>さんの詳細情報</h4>
     </div>
   </div>
   <div class = "row"><p><%= flash[:notice] %></p></div>
@@ -31,7 +31,7 @@
     </div>
   </div>
   <div class = "row">
-    <h4><%= @user.last_name + @user.first_name %>さんの投稿一覧</h4>
+    <h4><%= @user.nick_name %>さんの投稿一覧</h4>
   </div>
   <div class = "row">
   <% @pictures.each do |picture| %>
