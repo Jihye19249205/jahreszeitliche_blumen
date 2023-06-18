@@ -8,19 +8,7 @@
       <table>
         <%= render "public/shared/error_messages", resource: resource %>
         <tr>
-          <th>名前：</th>
-          <td><%= f.label "（姓）" %><%= f.text_field :last_name %></td>
-          <td><%= f.label "（名）" %><%= f.text_field :first_name %></td>
-        </tr>
-
-        <tr>
-          <th>フリガナ：</th>
-          <td><%= f.label "（セイ）" %><%= f.text_field :last_name_kana %></td>
-          <td><%= f.label "（メイ）" %><%= f.text_field :first_name_kana %></td>
-        </tr>
-
-        <tr>
-          <th><%= f.label "ニックネーム" %>：</th>
+          <th><%= f.label "ユーザー名" %>：</th>
           <td><%= f.text_field :nick_name %></td>
         </tr>
         <tr>
@@ -32,14 +20,9 @@
           <td><%= f.collection_select :prefecture_id, Prefecture.all, :id,:prefecture, { prompt: "選択してください"} %></td>
         </tr>
         <tr>
-          <th><%= f.label "電話番号(ハイフンなし)" %>：</th>
-          <td><%= f.telephone_field :phone_number %></td>
-        </tr>
-        <tr>
           <th><%= f.label "パスワード（6文字以上）" %>：</th>
           <td><%= f.password_field :password, autocomplete: "new-password" %></td>
         </tr>
-
         <tr>
           <th><%= f.label "パスワード（確認用）" %>：</th>
           <td><%= f.password_field :password_confirmation, autocomplete: "new-password" %></td>
@@ -56,6 +39,8 @@
       <p><%= link_to "ログイン画面へ", new_user_session_path, class: "btn btn-primary" %></p>
     </div>
   </div>
+  <div class = "row py-5"></div>
+  <div class = "row py-5"></div>
   <footer class = "footer text-dark py-5 m-0">
     <p class = "text-center">Copy Right. Chie Hirayama</p>
   </footer>
