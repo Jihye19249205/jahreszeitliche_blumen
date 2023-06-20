@@ -12,7 +12,9 @@ class Public::PictureCommentsController < ApplicationController
 
   def destroy
     PictureComment.find(params[:id]).destroy
-    redirect_to picture_path(params[:picture_id])
+    unless @picture_comment.user.id == current_user.id
+      redirect_to picture_path(@user)
+    end
   end
 
   private
