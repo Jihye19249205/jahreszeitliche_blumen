@@ -32,20 +32,20 @@ class DeviseCreateUsers < ActiveRecord::Migration[6.1]
       # t.string   :unlock_token # Only if unlock strategy is :email or :both
       # t.datetime :locked_at
 
-      #姓
-      t.string :last_name, null: false
-      #名
-      t.string :first_name, null: false
-      #姓カナ
-      t.string :last_name_kana, null: false
-      #名カナ
-      t.string :first_name_kana, null: false
+      # #姓
+      # t.string :last_name, null: false
+      # #名
+      # t.string :first_name, null: false
+      # #姓カナ
+      # t.string :last_name_kana, null: false
+      # #名カナ
+      # t.string :first_name_kana, null: false
       #ニックネーム
       t.string :nick_name, null: false
       #在住都道府県
       t.references :prefecture, foreign_key: false, null: false
-      #電話番号
-      t.string :phone_number, null: false, unique: true
+      # #電話番号
+      # t.string :phone_number, null: false, unique: true
       #紹介文
       t.text :introduction
       #アカウントステータス
