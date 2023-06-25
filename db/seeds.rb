@@ -112,7 +112,7 @@ users = User.create!([
     # first_name_kana: 'ハナエ',
     nick_name: 'Suzuki-Hanae',
     introduction: '素敵な写真をたくさん見たいです。',
-    prefecture_id: 5, #Prefecture.find_by(prefecture: "千葉県")
+    prefecture_id: 5, #Prefecture.find_by(prefecture: "千葉県"),
     # phone_number: '080-4444-4444',
     is_deleted: false,
     profile_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/production/test_profile_images/profile-image_user3.JPG"), filename: "profile-image_user3.JPG")
@@ -126,7 +126,7 @@ users = User.create!([
     # first_name_kana: 'ヒトシ',
     nick_name: 'Tanaka-Hitoshi',
     introduction: 'ご訪問ありがとうございます。',
-    prefecture_id: 6, #Prefecture.find_by(prefecture: "茨城県")
+    prefecture_id: 6, #Prefecture.find_by(prefecture: "茨城県"),
     # phone_number: '080-5555-5555',
     is_deleted: false,
     profile_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/production/test_profile_images/profile-image_user4.JPG"), filename: "profile-image_user4.JPG")
@@ -140,7 +140,7 @@ users = User.create!([
     # first_name_kana: 'ユウコ',
     nick_name: 'Mochizuki-Yuko',
     introduction: 'お花が大好きです。',
-    prefecture_id: 6, #Prefecture.find_by(prefecture: "茨城県")
+    prefecture_id: 6, #Prefecture.find_by(prefecture: "茨城県"),
     # phone_number: '080-6666-6666',
     is_deleted: false,
     profile_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/production/test_profile_images/profile-image_user5.JPG"), filename: "profile-image_user5.JPG")
@@ -168,7 +168,7 @@ users = User.create!([
     # first_name_kana: 'ショウジ',
     nick_name: 'Murata-Shoji',
     introduction: 'よろしくお願いいたします。',
-    prefecture_id: 3, #Prefecture.find_by(prefecture: "埼玉県")
+    prefecture_id: 3, #Prefecture.find_by(prefecture: "埼玉県"),
     # phone_number: '080-8888-8888',
     is_deleted: false,
     profile_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/production/test_profile_images/profile-image_user7.JPG"), filename: "profile-image_user7.JPG")
@@ -182,7 +182,7 @@ users = User.create!([
     # first_name_kana: 'ノリコ',
     nick_name: 'Yamamoto-Noriko',
     introduction: '素敵な写真を見るのが楽しみです。',
-    prefecture_id: 2, #Prefecture.find_by(prefecture: "東京都")
+    prefecture_id: 2, #Prefecture.find_by(prefecture: "東京都"),
     # phone_number: '080-9999-9999',
     is_deleted: false,
     profile_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/production/test_profile_images/profile-image_user8.JPG"), filename: "profile-image_user8.JPG")
@@ -196,7 +196,7 @@ users = User.create!([
     # first_name_kana: 'チエ',
     nick_name: 'Hirayama-Chie',
     introduction: '共通の趣味で盛り上がりましょう！',
-    prefecture_id: 2, #Prefecture.find_by(prefecture: "東京都")
+    prefecture_id: 2, #Prefecture.find_by(prefecture: "東京都"),
     # phone_number: '090-1111-1111',
     is_deleted: false,
     profile_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/production/test_profile_images/profile-image_user9.JPG"), filename: "profile-image_user9.JPG")
@@ -224,9 +224,9 @@ Picture.create!([
     image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/production/test_picture_images/picture1_user0.JPG"), filename: "picture1_user0.JPG")
   },
 
-  { user_id: 1, #User.find_by(nick_name: "Sato-Taro")
-    season_id: 4, #Season.find_by(season: "秋")
-    prefecture_id: 6, #Prefecture.find_by(prefecture: "茨城県")
+  { user_id: 1, #User.find_by(nick_name: "Sato-Taro"),
+    season_id: 4, #Season.find_by(season: "秋"),
+    prefecture_id: 6, #Prefecture.find_by(prefecture: "茨城県"),
     spot_name: 'ひたち海���公園',
     caption: 'オレンジのかわいい花が咲いてました',
     station: 'JR勝田駅',
@@ -235,9 +235,9 @@ Picture.create!([
     image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/production/test_picture_images/picture2_user0.JPG"), filename: "picture2_user0.JPG")
   },
 
-  { user_id: 2, #User.find_by(nick_name: "Sato-Taro")
-    season_id: 4, #Season.find_by(season: "秋")
-    prefecture_id: 6, #Prefecture.find_by(prefecture: "茨城県")
+  { user_id: 2, #User.find_by(nick_name: "Sato-Taro"),
+    season_id: 4, #Season.find_by(season: "秋"),
+    prefecture_id: 6, #Prefecture.find_by(prefecture: "茨城県"),
     spot_name: 'ひたち海浜公園',
     caption: 'コキアが綺麗に色づいてました。',
     station: 'JR勝田駅',
@@ -246,9 +246,9 @@ Picture.create!([
     image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/production/test_picture_images/picture1_user1.JPG"), filename: "picture1_user1.JPG")
   },
 
-  { user_id: 2, #User.find_by(nick_name: "Sato-Hanako")
-    season_id: 4, #Season.find_by(season: "秋")
-    prefecture_id: 6, #Prefecture.find_by(prefecture: "茨城県")
+  { user_id: 2, #User.find_by(nick_name: "Sato-Hanako"),
+    season_id: 4, #Season.find_by(season: "秋"),
+    prefecture_id: 6, #Prefecture.find_by(prefecture: "茨城県"),
     spot_name: 'ひたち海浜公園',
     caption: 'コキアが綺麗に色づいてました。',
     station: 'JR勝田駅',
@@ -257,9 +257,9 @@ Picture.create!([
     image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/production/test_picture_images/picture2_user1.JPG"), filename: "picture2_user1.JPG")
   },
 
-  { user_id: 3, #User.find_by(nick_name: "Suzuki-Jiro")
-    season_id: 4, #Season.find_by(season: "秋")
-    prefecture_id: 6, #Prefecture.find_by(prefecture: "茨城県")
+  { user_id: 3, #User.find_by(nick_name: "Suzuki-Jiro"),
+    season_id: 4, #Season.find_by(season: "秋"),
+    prefecture_id: 6, #Prefecture.find_by(prefecture: "茨城県"),
     spot_name: 'ひたち海浜公園',
     caption: 'コキアの赤が綺麗でした。',
     station: 'JR勝田駅',
@@ -268,9 +268,9 @@ Picture.create!([
     image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/production/test_picture_images/picture1_user2.JPG"), filename: "picture1_user2.JPG")
   },
 
-  { user_id: 3, #User.find_by(nick_name: "Suzuki-Jiro")
-    season_id: 2, #Season.find_by(season: "春")
-    prefecture_id: 6, #Prefecture.find_by(prefecture: "茨城県")
+  { user_id: 3, #User.find_by(nick_name: "Suzuki-Jiro"),
+    season_id: 2, #Season.find_by(season: "春"),
+    prefecture_id: 6, #Prefecture.find_by(prefecture: "茨城県"),
     spot_name: 'ひたち海浜公園',
     caption: '素敵な青が広がっていました。',
     station: 'JR勝田駅',
@@ -279,9 +279,9 @@ Picture.create!([
     image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/production/test_picture_images/picture1_user2.JPG"), filename: "picture2_user2.JPG")
   },
 
-  { user_id: 4, #User.find_by(nick_name: "Suzuki-Hanae")
-    season_id: 2, #Season.find_by(season: "春")
-    prefecture_id: 6, #Prefecture.find_by(prefecture: "茨城県")
+  { user_id: 4, #User.find_by(nick_name: "Suzuki-Hanae"),
+    season_id: 2, #Season.find_by(season: "春"),
+    prefecture_id: 6, #Prefecture.find_by(prefecture: "茨城県"),
     spot_name: 'ひたち海浜公園',
     caption: 'ネモフィラブルー、最高でした！',
     station: 'JR勝田駅',
@@ -290,9 +290,9 @@ Picture.create!([
     image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/production/test_picture_images/picture1_user3.JPG"), filename: "picture1_user3.JPG")
   },
 
-  { user_id: 4, #User.find_by(nick_name: "Suzuki-Hanae")
-    season_id: 2, #Season.find_by(season: "春")
-    prefecture_id: 6, #Prefecture.find_by(prefecture: "茨城県")
+  { user_id: 4, #User.find_by(nick_name: "Suzuki-Hanae"),
+    season_id: 2, #Season.find_by(season: "春"),
+    prefecture_id: 6, #Prefecture.find_by(prefecture: "茨城県"),
     spot_name: 'ひたち海浜公園',
     caption: 'チューリップもたくさん咲いていました！',
     station: 'JR勝田駅',
@@ -301,9 +301,9 @@ Picture.create!([
     image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/production/test_picture_images/picture2_user3.JPG"), filename: "picture2_user3.JPG")
   },
 
-  { user_id: 5, #user.find_by(nick_name: "Tanaka-Hitoshi")
-    season_id: 3, #season.find_by(season: "夏")
-    prefecture_id: 2, #prefecture.find_by(prefecture: "茨城県")
+  { user_id: 5, #user.find_by(nick_name: "Tanaka-Hitoshi"),
+    season_id: 3, #season.find_by(season: "夏"),
+    prefecture_id: 2, #prefecture.find_by(prefecture: "茨城県"),
     spot_name: '昭和記念公園',
     caption: 'ひまわりがとても可愛かったです。',
     station: 'JR立川駅',
@@ -312,9 +312,9 @@ Picture.create!([
     image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/production/test_picture_images/picture1_user4.JPG"), filename: "picture1_user4.JPG")
   },
 
-  { user_id: 5, #User.find_by(nick_name: "Tanaka-Hitoshi")
-    season_id: 3, #Season.find_by(season: "夏")
-    prefecture_id: 2, #Prefecture.find_by(prefecture: "東京都")
+  { user_id: 5, #User.find_by(nick_name: "Tanaka-Hitoshi"),
+    season_id: 3, #Season.find_by(season: "夏"),
+    prefecture_id: 2, #Prefecture.find_by(prefecture: "東京都"),
     spot_name: '昭和記念公園',
     caption: 'ひまわりがとても可愛かったです。',
     station: 'JR立川駅',
@@ -323,9 +323,9 @@ Picture.create!([
     image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/production/test_picture_images/picture2_user4.JPG"), filename: "picture2_user4.JPG")
   },
 
-  { user_id: 6, #User.find_by(nick_name: "Mochizuki-Yuko")
-    season_id: 2, #Season.find_by(season: "春")
-    prefecture_id: 2, #Prefecture.find_by(prefecture: "東京都")
+  { user_id: 6, #User.find_by(nick_name: "Mochizuki-Yuko"),
+    season_id: 2, #Season.find_by(season: "春"),
+    prefecture_id: 2, #Prefecture.find_by(prefecture: "東京都"),
     spot_name: '新宿御苑',
     caption: 'ペンタスというお花だそうです。可愛い。',
     station: '東京メトロ新宿御苑駅',
@@ -356,9 +356,9 @@ Picture.create!([
     image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/production/test_picture_images/picture1_user6.JPG"), filename: "picture1_user6.JPG")
   },
 
-  { user_id: 7, #User.find_by(nick_name: "Kinoshita-Hokuto")
-    season_id: 2, #Season.find_by(season: "春")
-    prefecture_id: 2, #Prefecture.find_by(prefecture: "東京都")
+  { user_id: 7, #User.find_by(nick_name: "Kinoshita-Hokuto"),
+    season_id: 2, #Season.find_by(season: "春"),
+    prefecture_id: 2, #Prefecture.find_by(prefecture: "東京都"),
     spot_name: '根津神社',
     caption: 'つつじ祭りに行ってきました！',
     station: '東京メトロ千駄木駅',
@@ -367,9 +367,9 @@ Picture.create!([
     image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/production/test_picture_images/picture2_user6.JPG"), filename: "picture2_user6.JPG")
   },
 
-  { user_id: 8, #User.find_by(nick_name: "Murata-Shoji")
-    season_id: 2, #Season.find_by(season: "春")
-    prefecture_id: 2, #Prefecture.find_by(prefecture: "東京都")
+  { user_id: 8, #User.find_by(nick_name: "Murata-Shoji"),
+    season_id: 2, #Season.find_by(season: "春"),
+    prefecture_id: 2, #Prefecture.find_by(prefecture: "東京都"),
     spot_name: '根津神社',
     caption: 'つつじ祭りに行ってきました！満開💐',
     station: '東京メトロ千駄木駅',
@@ -378,9 +378,9 @@ Picture.create!([
     image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/production/test_picture_images/picture1_user7.JPG"), filename: "picture1_user7.JPG")
   },
 
-  { user_id: 8, #User.find_by(nick_name: "Murata-Shoji")
-    season_id: 4, #Season.find_by(season: "秋")
-    prefecture_id: 3, #Prefecture.find_by(prefecture: "埼玉県")
+  { user_id: 8, #User.find_by(nick_name: "Murata-Shoji"),
+    season_id: 4, #Season.find_by(season: "秋"),
+    prefecture_id: 3, #Prefecture.find_by(prefecture: "埼玉県"),
     spot_name: '巾着田',
     caption: '満開の曼珠沙華',
     station: 'JR高麗駅',
@@ -389,9 +389,9 @@ Picture.create!([
     image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/production/test_picture_images/picture2_user7.JPG"), filename: "picture2_user7.JPG")
   },
 
-  { user_id: 9, #User.find_by(nick_name: "Yamamoto-Noriko")
-    season_id: 4, #Season.find_by(season: "秋")
-    prefecture_id: 3, #Prefecture.find_by(prefecture: "埼玉県")
+  { user_id: 9, #User.find_by(nick_name: "Yamamoto-Noriko"),
+    season_id: 4, #Season.find_by(season: "秋"),
+    prefecture_id: 3, #Prefecture.find_by(prefecture: "埼玉県"),
     spot_name: '巾着田',
     caption: '巾着田の曼珠沙華祭りに行ってきました！',
     station: 'JR高麗駅',
@@ -400,9 +400,9 @@ Picture.create!([
     image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/production/test_picture_images/picture1_user8.JPG"), filename: "picture1_user8.JPG")
   },
 
-  { user_id: 9, #User.find_by(nick_name: "Yamamoto-Noriko")
-    season_id: 4, #Season.find_by(season: "秋")
-    prefecture_id: 3, #Prefecture.find_by(prefecture: "埼玉県")
+  { user_id: 9, #User.find_by(nick_name: "Yamamoto-Noriko"),
+    season_id: 4, #Season.find_by(season: "秋"),
+    prefecture_id: 3, #Prefecture.find_by(prefecture: "埼玉県"),
     spot_name: '巾着田',
     caption: '巾着田の曼珠沙華祭りに行ってきました！',
     station: 'JR高麗駅',
@@ -411,9 +411,9 @@ Picture.create!([
     image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/production/test_picture_images/picture2_user8.JPG"), filename: "picture2_user8.JPG")
   },
 
-  { user_id: 10, #User.find_by(nick_name: "Hirayama-Chie")
-    season_id: 5, #Season.find_by(season: "冬")
-    prefecture_id: 6, #Prefecture.find_by(prefecture: "茨城県")
+  { user_id: 10, #User.find_by(nick_name: "Hirayama-Chie"),
+    season_id: 5, #Season.find_by(season: "冬"),
+    prefecture_id: 6, #Prefecture.find_by(prefecture: "茨城県"),
     spot_name: '筑波山',
     caption: '筑波山登山ついでに紅葉をパシャリ📷 綺麗でした！',
     station: 'TXつくば駅',
@@ -422,9 +422,9 @@ Picture.create!([
     image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/production/test_picture_images/picture1_user9.JPG"), filename: "picture1_user9.JPG")
   },
 
-  { user_id: 10, #User.find_by(nick_name: "Hirayama-Chie")
-    season_id: 5, #Season.find_by(season: "冬")
-     prefecture_id: 6, #prefecture.find_by(prefecture: "茨城県")
+  { user_id: 10, #User.find_by(nick_name: "Hirayama-Chie"),
+    season_id: 5, #Season.find_by(season: "冬"),
+     prefecture_id: 6, #prefecture.find_by(prefecture: "茨城県"),
     spot_name: '筑波山',
     caption: '筑波山登山ついでに紅葉をパシャリ📷 綺麗でした！',
     station: 'TXつくば駅',
