@@ -176,7 +176,7 @@ Picture.create!([
   { user_id: User.find_by(nick_name: "Sato-Taro"),
     season_id: Season.find_by(season: "秋"),
     prefecture_id: Prefecture.find_by(prefecture: "茨城県"),
-    spot_name: 'ひたち海���公園',
+    spot_name: 'ひたち海海浜公園',
     caption: 'オレンジのかわいい花が咲いてました',
     station: 'JR勝田駅',
     flower_plant: 'パンジー',
@@ -373,7 +373,7 @@ Picture.create!([
 
   { user_id: User.find_by(nick_name: "Hirayama-Chie"),
     season_id: Season.find_by(season: "冬"),
-     prefecture_id: Prefecture.find_by(prefecture: "茨城県"),
+    prefecture_id: Prefecture.find_by(prefecture: "茨城県"),
     spot_name: '筑波山',
     caption: '筑波山登山ついでに紅葉をパシャリ📷 綺麗でした！',
     station: 'TXつくば駅',

@@ -9,8 +9,8 @@ class Picture < ApplicationRecord
     # has_many :prefectures, through: :categories
     # has_many :seasons, through: :categories
 
-    validates :prefecture, presence: true
-    validates :season, presence: true
+    # validates :prefecture, presence: true
+    # validates :season, presence: true
 
   def wanna_gone_by?(user)
     wanna_goes.exists?(user_id: user.id)

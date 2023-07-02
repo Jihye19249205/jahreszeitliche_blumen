@@ -11,7 +11,6 @@ class User < ApplicationRecord
     has_many :wanna_goes, dependent: :destroy
     has_one_attached :profile_image
 
-    # validates :prefecture_id, :last_name, :first_name, :last_name_kana, :first_name_kana, :phone_number, presense: true
     validates :nick_name, length: { minimum: 2, maximum: 20 }
     validates :introduction, length: { maximum: 50 }
 
@@ -19,12 +18,7 @@ class User < ApplicationRecord
       find_or_create_by!(
       email: 'guest-user@example.com',
       prefecture_id: 2,
-      last_name: 'ゲスト',
-      first_name: 'ユーザ',
-      last_name_kana: 'ゲスト',
-      first_name_kana: 'ユーザ',
       nick_name: 'Guest',
-      phone_number: '03-1111-1111',
       is_deleted: false
       ) do |user|
         user.password = SecureRandom.urlsafe_base64
