@@ -60,14 +60,8 @@ class Public::UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(
-      :nick_name,
-      :last_name,
-      :first_name,
-      :last_name_kana,
-      :first_name_kana,
       :introduction,
       :prefecture_id,
-      :phone_number,
       :email,
       :is_deleted,
       :profile_image,
