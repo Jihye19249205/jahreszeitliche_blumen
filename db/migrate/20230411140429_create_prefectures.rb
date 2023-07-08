@@ -3,8 +3,8 @@ class CreatePrefectures < ActiveRecord::Migration[6.1]
     create_table :prefectures do |t|
       #カテゴリID
       t.references :category, null: false
-      #都道府県(enum)
-      t.string :prefecture, null: false
+      #都道府県
+      t.string :prefecture
 
       t.timestamps
     end

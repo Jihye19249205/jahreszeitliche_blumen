@@ -81,6 +81,7 @@ users = User.create!([
   },
 
   { email: 'user3@test.com',
+    password: 'suzukijiro',
     nick_name: 'Suzuki-Jiro',
     introduction: 'よろしくお願いいたします。',
     prefecture_id: Prefecture.find_by(prefecture: "神奈川県"),

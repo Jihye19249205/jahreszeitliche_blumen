@@ -85,7 +85,7 @@ ActiveRecord::Schema.define(version: 2023_05_13_043541) do
 
   create_table "prefectures", force: :cascade do |t|
     t.integer "category_id", null: false
-    t.string "prefecture", null: false
+    t.string "prefecture"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["category_id"], name: "index_prefectures_on_category_id"
@@ -106,7 +106,7 @@ ActiveRecord::Schema.define(version: 2023_05_13_043541) do
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.string "nick_name", null: false
-    t.integer "prefecture_id", null: false
+    t.integer "prefecture_id"
     t.text "introduction"
     t.boolean "is_deleted", default: false, null: false
     t.datetime "created_at", precision: 6, null: false
