@@ -1,2 +1,23 @@
 @use '~bootstrap/scss/bootstrap';
 @use '~@fortawesome/fontawesome-free/scss/fontawesome';
+
+
+// メディアクエリ
+@media screen and (max-width:1024px) {
+  .social i {
+    width: 100%;
+  }
+}
+
+
+@media screen and (max-width:768px) {
+  .social i {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width:425px) {
+  .social i {
+    width: 100%;
+  }
+}
