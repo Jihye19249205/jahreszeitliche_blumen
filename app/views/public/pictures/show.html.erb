@@ -78,6 +78,8 @@
           <td><%= picture_comment.comment %></td>
           <% if picture_comment.user == current_user %>
           <td><%= link_to "コメント削除", picture_picture_comment_path(picture_comment.picture, picture_comment), class: "btn btn-secondary", method: :delete %></td>
+          <% else %>
+          <td></td>
           <% end %>
         </tr>
         <% end %>
