@@ -11,14 +11,14 @@ class Public::PictureCommentsController < ApplicationController
   end
 
   def destroy
-    PictureComment.find(params[:id]).destroy
+    PictureComment.find(params[:picture_id]).destroy
     redirect_to picture_path(@user)
   end
 
   private
 
   def picture_comment_params
-    params.require(:picture_comment).permit(:comment)
+    params.require(:picture_comment).permit(:comment, :picture_id)
   end
 
 end

@@ -61,7 +61,7 @@ class Public::PicturesController < ApplicationController
   end
 
   def destroy
-    @picture = Picture.find(params[:id])
+    @picture = Picture.find(params[:picture_id])
     @picture.destroy
     flash[:notice] = "投稿を削除しました"
     redirect_to user_path(current_user)
