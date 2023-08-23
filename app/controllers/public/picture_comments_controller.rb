@@ -3,22 +3,23 @@ class Public::PictureCommentsController < ApplicationController
   before_action :authenticate_user!
 
   def create
-    picture = Picture.find(params[:picture_id])
+    @picture = Picture.find(params[:picture_id])
     comment = current_user.picture_comments.new(picture_comment_params)
-    comment.picture_id = picture.id
+    comment.picture_id = @picture.id
     comment.save
-    redirect_to picture_path(picture)
+    redirect_to picture_path(@picture)
   end
 
   def destroy
-    PictureComment.find(params[:picture_id]).destroy
-    redirect_to picture_path(@user)
+    picture_comment = current_user.picture_comments.find(params[:id])
+    picture_comment.destroy
+    redirect_to picture_path(@picture)
   end
 
   private
 
   def picture_comment_params
-    params.require(:picture_comment).permit(:comment, :picture_id)
+    params.require(:picture_comment).permit(:comment)
   end
 
 end
