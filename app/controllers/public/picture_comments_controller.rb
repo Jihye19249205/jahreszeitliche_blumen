@@ -11,9 +11,8 @@ class Public::PictureCommentsController < ApplicationController
   end
 
   def destroy
-    picture_comment = current_user.picture_comments.find(params[:id])
-    picture_comment.destroy
-    redirect_to picture_path(@picture)
+    PictureComment.find(params[:id]).destroy
+    redirect_to picture_path(params[:picture_id])
   end
 
   private
