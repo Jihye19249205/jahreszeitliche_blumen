@@ -24,10 +24,23 @@ class Picture < ApplicationRecord
     image
   end
 
-  def self.search_for(content, method)
-    if method == 'perfect'
-        Picture.where(prefecture, season: content)
+  # def self.search_for(content, method)
+  #   if method == 'perfect'
+  #       Picture.where(prefecture, season: content)
+  #   end
+  # end
+  
+  def search
+    search_word = params[:word]
+    @pictures = Picture.where("flower_plant LIKE ?", "%#{search_word}%")
+    @pictures = @pictures.where("season_id LIKE ?", "%#{params[:season_id]}%")
+    @pictures = @pictures.where("prefecture_id LIKE ?", "%#{params[:prefecture_id]}%")
+    if @pictures.size > 0
+      flash[:notice] = "#{@pictures.count}件の投稿が見つかりました"
+    else
+      flash[:notice] = "投稿が見つかりませんでした"
     end
+    render 'index'
   end
 
 end

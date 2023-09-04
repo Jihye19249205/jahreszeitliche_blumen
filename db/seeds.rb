@@ -189,7 +189,7 @@ Picture.create!([
     image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/production/test_picture_images/picture2_user0.JPG"), filename: "picture2_user0.JPG")
   },
 
-  { user: User.find_by(nick_name: "Sato-Taro"),
+  { user: User.find_by(nick_name: "Sato-Hanako"),
     season: Season.find_by(season: "秋"),
     prefecture: Prefecture.find_by(prefecture: "茨城県"),
     spot_name: 'ひたち海浜公園',
