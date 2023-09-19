@@ -16,7 +16,7 @@ class Public::PicturesController < ApplicationController
   # end
 
   def search
-    @picture.search_picture
+    picture.search_picture
   end
 
   def index
