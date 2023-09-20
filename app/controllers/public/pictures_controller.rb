@@ -16,7 +16,8 @@ class Public::PicturesController < ApplicationController
   # end
 
   def search
-    picture.search_picture
+    @pictures = Picutre.find(params[:id])
+    @search = @pictures.search_picture
   end
 
   def index
